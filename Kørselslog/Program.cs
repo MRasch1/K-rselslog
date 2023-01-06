@@ -18,13 +18,13 @@ namespace Kørselslog
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
-
+            
 
         }
 
-        private void AddNewCustomers(DataSet1 currentCustomer)
+        private void AddNewCustomers(DatabaseKørselslogDataSet currentCustomer)
         {
-            DataSet1TableAdapters.stamdataTableAdapter DataSetAdapter = new DataSet1TableAdapters.stamdataTableAdapter();
+            DatabaseKørselslogDataSetTableAdapters.stamdataTableAdapter DataSetAdapter = new DatabaseKørselslogDataSetTableAdapters.stamdataTableAdapter();
 
             
             

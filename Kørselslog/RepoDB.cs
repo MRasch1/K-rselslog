@@ -7,53 +7,47 @@ namespace Kørselslog
 {
     public class RepoDB
     {
-        SqlConnection con = new SqlConnection();
-        SqlCommand sql_command = new SqlCommand();
+        private SqlConnection _con = new SqlConnection();
+        private SqlCommand _sql_command = new SqlCommand();
+        string _connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=H:\Visual Studio\Kørselslog\Kørselslog\DatabaseKørselslog.mdf;Integrated Security=True";
         public RepoDB()
         {
-            //bridge between sql server to c#
-            con.ConnectionString = "Data Source = tecstudentserver.database.windows.net; Database=Personale; User ID = serveradmin; Password = Passw0rd; Connect Timeout = 30; Encrypt = True; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False";
+            _con.ConnectionString = _connectionString;
         }
 
-   
-        public int CreatePersonInPersonla(Personale personale)
+
+
+        public int CreatePersonInPersonle(Personale personale)
         {
             int result = -1; 
             try
             {
-                //opening connection
-                con.Open();
-                //create an insert query;
-                string sql = "INSERT INTO stamdata (Navn,Dato,[Nr.Plade]) VALUES('" + personale.Navn + "','" + personale.Dato.DayOfYear + "','" + personale.NrPlade + "')";
-                //initialize a new instance of sqlcommand
-                sql_command = new SqlCommand();
-                //set a connection used by this instance of sqlcommand
-                sql_command.Connection = con;
-                //set the sql statement to execute at the data source
-                sql_command.CommandText = sql;
-                //execute the data.
-                result = (int) sql_command.ExecuteNonQuery();
-                //validate the result of the executed query.
-                if (result > 0)
+                // Open the connection.
+                using (_con = new SqlConnection(_connectionString))
                 {
-                    MessageBox.Show("Data has been saved in the SQL database");
+                    _con.Open();
+                    string sql = "INSERT INTO stamdata (Navn,Dato) VALUES(@Navn,@Dato)";
+
+                    using (_sql_command = new SqlCommand(sql, _con))
+                    {
+                        _sql_command.Parameters.AddWithValue("@Navn", personale.Navn);
+                        _sql_command.Parameters.AddWithValue("@Dato", personale.Dato);
+                        var antalgemteRækker = _sql_command.ExecuteNonQuery();
+                        result = antalgemteRækker;
+                        _con.Close();
+                    }
+
                 }
-                else
-                {
-                    MessageBox.Show("SQL QUERY ERROR");
-                }
-                //closing connection
-                con.Close();
 
             }
             catch (Exception ex)//catch exeption
             {
-                con.Close();
+                _con.Close();
                 //displaying errors message.
                 MessageBox.Show(ex.Message);
             }
 
-            return -1;
+            return result;
         }
 
         public List<Personale> Readall()
@@ -74,7 +68,7 @@ namespace Kørselslog
 
         public int InsertExcemple()
         {
-            using (SqlCommand cmd = new SqlCommand("INSERT INTO Mem_Basic(Mem_Na,Mem_Occ) output INSERTED.ID VALUES(@na,@occ)", con))
+            using (SqlCommand cmd = new SqlCommand("INSERT INTO Mem_Basic(Mem_Na,Mem_Occ) output INSERTED.ID VALUES(@na,@occ)", _con))
             {
                 //cmd.Parameters.AddWithValue("@na", Mem_NA);
                 //cmd.Parameters.AddWithValue("@occ", Mem_Occ);

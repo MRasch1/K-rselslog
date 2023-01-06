@@ -23,16 +23,16 @@ namespace Kørselslog
 
         private void button2_Save_Click(object sender, EventArgs e)
         {
-            DataSet1TableAdapters.stamdataTableAdapter DataSetAdapter = new DataSet1TableAdapters.stamdataTableAdapter();
+            DatabaseKørselslogDataSetTableAdapters.stamdataTableAdapter DataSetAdapter = new DatabaseKørselslogDataSetTableAdapters.stamdataTableAdapter();
 
             //udfylder textboksen hvis ingen text - altså ved string.Empty
-            textBox3.Text = textBox3.Text != string.Empty ? textBox3.Text : "BR12365";
+            //textBox3.Text = textBox3.Text != string.Empty ? textBox3.Text : "BR12365";
             dateTimePicker1.Text = dateTimePicker1.Text != string.Empty ? dateTimePicker1.Text : "2001/10/12";
             textBox1.Text = textBox1.Text != string.Empty ? textBox1.Text : "Mathias";
 
-            var p = new Personale() { Navn = textBox1.Text, NrPlade = textBox3.Text, Dato = (DateTime.Parse(dateTimePicker1.Text)) };
+            var p = new Personale() { Navn = textBox1.Text, /*NrPlade = textBox3.Text,*/ Dato = (DateTime.Parse(dateTimePicker1.Text)) };
 
-            int id = _repo.CreatePersonInPersonla(p);
+            int id = _repo.CreatePersonInPersonle(p);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -105,6 +105,19 @@ namespace Kørselslog
 
         }
 
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
 
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

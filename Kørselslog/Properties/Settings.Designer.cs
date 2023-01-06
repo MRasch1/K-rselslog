@@ -34,5 +34,16 @@ namespace Kørselslog.Properties {
                 return ((string)(this["PersonaleConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\DatabaseKørse" +
+            "lslog.mdf;Integrated Security=True")]
+        public string DatabaseKørselslogConnectionString {
+            get {
+                return ((string)(this["DatabaseKørselslogConnectionString"]));
+            }
+        }
     }
 }
