@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kørselslog
 {
-    internal class Bil
+    public class Bil
     {
         public int Id { get; set; }
         public string Navn { get; set; }

@@ -31,8 +31,23 @@ namespace Kørselslog
             textBox1.Text = textBox1.Text != string.Empty ? textBox1.Text : "Mathias";
 
             var p = new Personale() { Navn = textBox1.Text, /*NrPlade = textBox3.Text,*/ Dato = (DateTime.Parse(dateTimePicker1.Text)) };
-
             int id = _repo.CreatePersonInPersonle(p);
+        }
+
+        private void button9_Save_Click(object sender, EventArgs e)
+        {
+            textBox3.Text = textBox3.Text != string.Empty ? textBox3.Text : "Grøn bil";
+            dateTimePicker3.Text = dateTimePicker3.Text != string.Empty ? dateTimePicker3.Text : "1998/10/5";
+            textBox5.Text = textBox5.Text != string.Empty ? textBox5.Text : "HKWTF";
+
+            var p = new Bil() { Navn = textBox3.Text, Dato = DateTime.Parse(dateTimePicker3.Text), NrPlade = textBox5.Text };
+            int id = _repo.CreateBilInBil(p);
+        }
+
+        private void button3_Save_Click(object sender, EventArgs e)
+        {
+            
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -116,6 +131,56 @@ namespace Kørselslog
         }
 
         private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OpretStamdata_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker3_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
         {
 
         }

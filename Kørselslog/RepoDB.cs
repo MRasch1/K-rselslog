@@ -65,6 +65,40 @@ namespace Kørselslog
             throw new NotImplementedException();
         }
 
+        public int CreateBilInBil(Bil bil)
+        {
+            int result = -1;
+            try
+            {
+                // Open the connection.
+                using (_con = new SqlConnection(_connectionString))
+                {
+                    _con.Open();
+                    string sql = "INSERT INTO Bildata (Navn,Nrplade,Dato) VALUES(@Navn,@NrPlade,@Dato)";
+
+                    using (_sql_command = new SqlCommand(sql, _con))
+                    {
+                        _sql_command.Parameters.AddWithValue("@Navn", bil.Navn);
+                        _sql_command.Parameters.AddWithValue("@NrPlade", bil.NrPlade);
+                        _sql_command.Parameters.AddWithValue("@Dato", bil.Dato);
+                        var antalgemteRækker = _sql_command.ExecuteNonQuery();
+                        result = antalgemteRækker;
+                        _con.Close();
+                    }
+
+                }
+
+            }
+            catch (Exception ex)//catch exeption
+            {
+                _con.Close();
+                //displaying errors message.
+                MessageBox.Show(ex.Message);
+            }
+
+            return result;
+        }
+
 
         public int InsertExcemple()
         {
