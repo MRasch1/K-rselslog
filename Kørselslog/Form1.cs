@@ -14,6 +14,11 @@ namespace Kørselslog
     public partial class Form1 : Form
     {
         RepoDB _repo;
+        private SqlConnection _con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=H:\Visual Studio\Kørselslog\Kørselslog\DatabaseKørselslog.mdf;Integrated Security=True");
+        private SqlCommand _cmd;
+        private DataTable _dataTable;
+        private SqlDataAdapter _dataAdapter;
+        private DataSet _dataSet;
 
         public Form1()
         {
@@ -42,6 +47,51 @@ namespace Kørselslog
 
             var p = new Bil() { Navn = textBox3.Text, Dato = DateTime.Parse(dateTimePicker3.Text), NrPlade = textBox5.Text };
             int id = _repo.CreateBilInBil(p);
+        }
+
+        private void button11_show_Click(object sender, EventArgs e)
+        {
+            
+
+            listView1.Columns.Add("Række-nr", 20, HorizontalAlignment.Left);
+            listView1.Columns.Add("Navn", 70, HorizontalAlignment.Center);
+            listView1.Columns.Add("NrPlade", 80, HorizontalAlignment.Center);
+            listView1.Columns.Add("Dato", 80, HorizontalAlignment.Center);
+
+            listView1.View = View.Details;
+            _cmd = new SqlCommand("select * from BilData", _con);
+            _dataAdapter = new SqlDataAdapter(_cmd);
+            _dataSet = new DataSet();
+            _dataAdapter.Fill(_dataSet, "testTable");
+            _con.Close();
+
+            _dataTable = _dataSet.Tables["testTable"];
+
+            for (int i = 0; i <= _dataTable.Rows.Count - 1; i++)
+            {
+                listView1.Items.Add(_dataTable.Rows[i].ItemArray[0].ToString());
+                listView1.Items[i].SubItems.Add(_dataTable.Rows[i].ItemArray[1].ToString());
+                listView1.Items[i].SubItems.Add(_dataTable.Rows[i].ItemArray[2].ToString());
+                listView1.Items[i].SubItems.Add(_dataTable.Rows[i].ItemArray[3].ToString());
+            }
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void BoxForShowData(object sender, EventArgs e)
+        {
+            
+
+            
+        }
+
+        private void ShowDataBox(object sender, EventArgs e)
+        {
+
+            //int id = _repo.PullDataFromBilData
         }
 
         private void button3_Save_Click(object sender, EventArgs e)
@@ -184,5 +234,12 @@ namespace Kørselslog
         {
 
         }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        
     }
 }
