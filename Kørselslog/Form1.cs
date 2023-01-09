@@ -51,14 +51,17 @@ namespace Kørselslog
 
         private void button11_show_Click(object sender, EventArgs e)
         {
-            
+            _con.Open();
+            listView1.Clear();
+            _con.Close();
 
             listView1.Columns.Add("Række-nr", 20, HorizontalAlignment.Left);
             listView1.Columns.Add("Navn", 70, HorizontalAlignment.Center);
             listView1.Columns.Add("NrPlade", 80, HorizontalAlignment.Center);
             listView1.Columns.Add("Dato", 80, HorizontalAlignment.Center);
-
             listView1.View = View.Details;
+
+            _con.Open();
             _cmd = new SqlCommand("select * from BilData", _con);
             _dataAdapter = new SqlDataAdapter(_cmd);
             _dataSet = new DataSet();

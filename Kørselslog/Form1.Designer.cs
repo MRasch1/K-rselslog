@@ -49,17 +49,7 @@ namespace Kørselslog
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.OpretStamdata = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
             this.RedigerStamdata = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
@@ -252,133 +242,34 @@ namespace Kørselslog
             // OpretStamdata
             // 
             this.OpretStamdata.AutoSize = true;
-            this.OpretStamdata.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OpretStamdata.Location = new System.Drawing.Point(17, 11);
+            this.OpretStamdata.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OpretStamdata.Location = new System.Drawing.Point(39, 7);
             this.OpretStamdata.Name = "OpretStamdata";
-            this.OpretStamdata.Size = new System.Drawing.Size(82, 13);
+            this.OpretStamdata.Size = new System.Drawing.Size(110, 17);
             this.OpretStamdata.TabIndex = 0;
             this.OpretStamdata.Text = "Opret stamdata:";
             this.OpretStamdata.Click += new System.EventHandler(this.OpretStamdata_Click);
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.textBox2);
-            this.panel2.Controls.Add(this.dateTimePicker2);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.comboBox1);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.button3);
-            this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.button4);
             this.panel2.Controls.Add(this.RedigerStamdata);
-            this.panel2.Controls.Add(this.textBox4);
             this.panel2.Cursor = System.Windows.Forms.Cursors.Default;
             this.panel2.Location = new System.Drawing.Point(224, 43);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(210, 236);
+            this.panel2.Size = new System.Drawing.Size(210, 264);
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 82);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 13);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "Nyt Navn:";
-            this.label3.Click += new System.EventHandler(this.label3_Click_1);
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(95, 76);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 13;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(95, 132);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(100, 20);
-            this.dateTimePicker2.TabIndex = 13;
-            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 57);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(36, 13);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Navn:";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(95, 49);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(100, 21);
-            this.comboBox1.TabIndex = 11;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(16, 139);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(33, 13);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Dato:";
-            this.label5.Click += new System.EventHandler(this.label5_Click_2);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(120, 196);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "Ok";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Save_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(16, 110);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(53, 13);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Nr. plade:";
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(25, 196);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 9;
-            this.button4.Text = "Cancel";
-            this.button4.UseVisualStyleBackColor = true;
             // 
             // RedigerStamdata
             // 
             this.RedigerStamdata.AutoSize = true;
-            this.RedigerStamdata.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RedigerStamdata.Location = new System.Drawing.Point(19, 11);
+            this.RedigerStamdata.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RedigerStamdata.Location = new System.Drawing.Point(32, 7);
             this.RedigerStamdata.Name = "RedigerStamdata";
-            this.RedigerStamdata.Size = new System.Drawing.Size(93, 13);
+            this.RedigerStamdata.Size = new System.Drawing.Size(140, 20);
             this.RedigerStamdata.TabIndex = 1;
             this.RedigerStamdata.Text = "Rediger stamdata:";
             this.RedigerStamdata.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(95, 103);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 8;
-            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // panel3
             // 
@@ -433,10 +324,10 @@ namespace Kørselslog
             // SletStamdata
             // 
             this.SletStamdata.AutoSize = true;
-            this.SletStamdata.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SletStamdata.Location = new System.Drawing.Point(19, 11);
+            this.SletStamdata.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SletStamdata.Location = new System.Drawing.Point(20, 9);
             this.SletStamdata.Name = "SletStamdata";
-            this.SletStamdata.Size = new System.Drawing.Size(74, 13);
+            this.SletStamdata.Size = new System.Drawing.Size(102, 18);
             this.SletStamdata.TabIndex = 1;
             this.SletStamdata.Text = "Slet stamdata:";
             this.SletStamdata.Click += new System.EventHandler(this.label3_Click);
@@ -545,10 +436,10 @@ namespace Kørselslog
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(19, 11);
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(36, 11);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(89, 13);
+            this.label11.Size = new System.Drawing.Size(132, 20);
             this.label11.TabIndex = 1;
             this.label11.Text = "Opret kørsels log:";
             this.label11.Click += new System.EventHandler(this.label11_Click);
@@ -579,7 +470,7 @@ namespace Kørselslog
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(27, 65);
+            this.button11.Location = new System.Drawing.Point(27, 97);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(59, 23);
             this.button11.TabIndex = 20;
@@ -656,11 +547,7 @@ namespace Kørselslog
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label OpretStamdata;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label RedigerStamdata;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
@@ -668,9 +555,6 @@ namespace Kørselslog
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label PersonaleData;
         private System.Windows.Forms.Panel panel4;
@@ -688,9 +572,6 @@ namespace Kørselslog
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DateTimePicker dateTimePicker3;
         private System.Windows.Forms.TextBox textBox3;
