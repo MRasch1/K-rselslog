@@ -70,9 +70,11 @@ namespace Kørselslog
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
             this.label14 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -460,6 +462,8 @@ namespace Kørselslog
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.button4);
+            this.panel5.Controls.Add(this.button3);
             this.panel5.Controls.Add(this.button11);
             this.panel5.Controls.Add(this.listView1);
             this.panel5.Controls.Add(this.label14);
@@ -468,15 +472,25 @@ namespace Kørselslog
             this.panel5.Size = new System.Drawing.Size(398, 236);
             this.panel5.TabIndex = 13;
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(30, 187);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(59, 23);
+            this.button3.TabIndex = 21;
+            this.button3.Text = "Clear";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.ClearListView1);
+            // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(27, 97);
+            this.button11.Location = new System.Drawing.Point(30, 123);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(59, 23);
             this.button11.TabIndex = 20;
             this.button11.Text = "Bil Data";
             this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_show_Click);
+            this.button11.Click += new System.EventHandler(this.button11_show_Bil_Click);
             // 
             // listView1
             // 
@@ -498,6 +512,16 @@ namespace Kørselslog
             this.label14.TabIndex = 0;
             this.label14.Text = "Se stamdata:";
             this.label14.Click += new System.EventHandler(this.label14_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(30, 65);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(59, 41);
+            this.button4.TabIndex = 22;
+            this.button4.Text = "Person Data";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_show_Person_Click);
             // 
             // Form1
             // 
@@ -583,6 +607,8 @@ namespace Kørselslog
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
     }
 }
 

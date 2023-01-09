@@ -19,6 +19,7 @@ namespace Kørselslog
         private DataTable _dataTable;
         private SqlDataAdapter _dataAdapter;
         private DataSet _dataSet;
+        
 
         public Form1()
         {
@@ -49,13 +50,37 @@ namespace Kørselslog
             int id = _repo.CreateBilInBil(p);
         }
 
-        private void button11_show_Click(object sender, EventArgs e)
+        private void button4_show_Person_Click(object sender, EventArgs e)
         {
+            _con.Open(); listView1.Clear(); _con.Close();
+
+            listView1.Columns.Add("ID", 30, HorizontalAlignment.Left);
+            listView1.Columns.Add("Navn", 100, HorizontalAlignment.Center);
+            listView1.Columns.Add("Dato", 80, HorizontalAlignment.Center);
+            listView1.View = View.Details;
+
             _con.Open();
-            listView1.Clear();
+            _cmd = new SqlCommand("select * from stamdata", _con);
+            _dataAdapter = new SqlDataAdapter(_cmd);
+            _dataSet = new DataSet();
+            _dataAdapter.Fill(_dataSet, "StamTable");
             _con.Close();
 
-            listView1.Columns.Add("Række-nr", 20, HorizontalAlignment.Left);
+            _dataTable = _dataSet.Tables["StamTable"];
+
+            for (int i = 0; i <= _dataTable.Rows.Count - 1; i++)
+            {
+                listView1.Items.Add(_dataTable.Rows[i].ItemArray[0].ToString());
+                listView1.Items[i].SubItems.Add(_dataTable.Rows[i].ItemArray[1].ToString());
+                listView1.Items[i].SubItems.Add(_dataTable.Rows[i].ItemArray[2].ToString());
+            }
+        }
+
+        private void button11_show_Bil_Click(object sender, EventArgs e)
+        {
+            _con.Open(); listView1.Clear(); _con.Close();
+
+            listView1.Columns.Add("ID", 30, HorizontalAlignment.Left);
             listView1.Columns.Add("Navn", 70, HorizontalAlignment.Center);
             listView1.Columns.Add("NrPlade", 80, HorizontalAlignment.Center);
             listView1.Columns.Add("Dato", 80, HorizontalAlignment.Center);
@@ -77,6 +102,16 @@ namespace Kørselslog
                 listView1.Items[i].SubItems.Add(_dataTable.Rows[i].ItemArray[2].ToString());
                 listView1.Items[i].SubItems.Add(_dataTable.Rows[i].ItemArray[3].ToString());
             }
+
+
+
+        }
+
+        private void ClearListView1(object sender, EventArgs e)
+        {
+            _con.Open();
+            listView1.Clear();
+            _con.Close();
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
