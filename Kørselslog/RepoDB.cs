@@ -9,6 +9,7 @@ namespace Kørselslog
     {
         private SqlConnection _con = new SqlConnection();
         private SqlCommand _sql_command = new SqlCommand();
+        private SqlDataReader _sqlReader;
         string _connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=H:\Visual Studio\Kørselslog\Kørselslog\DatabaseKørselslog.mdf;Integrated Security=True";
         public RepoDB()
         {
@@ -17,7 +18,7 @@ namespace Kørselslog
 
 
 
-        public int CreatePersonInPersonle(Personale personale)
+        public int CreatePersonInPersonale(Personale personale)
         {
             int result = -1; 
             try
@@ -50,6 +51,8 @@ namespace Kørselslog
             return result;
         }
 
+        
+
         public List<Personale> Readall()
         {
             throw new NotImplementedException();
@@ -64,6 +67,52 @@ namespace Kørselslog
         {
             throw new NotImplementedException();
         }
+
+        public int UpdatePersonInPersonale(Personale personale)
+        {
+            int result = -1;
+            try
+            {
+                // Open the connection.
+                using (_con = new SqlConnection(_connectionString))
+                {
+                    //_con.Open();
+                    //_sqlQuery = "UPDATE [stamdata] SET [Navn] ='" + textBox1.Text + "'Where [Navn] ='" + textBox2.Text + "'";
+                    ////sqlQuery = "INSERT INTO [User] ([Name], [NrPlade]) VALUES(" + "'" + textBox2.Text + "'" + ", " + "'" + textBox3.Text + "'" + ")";
+
+                    //_cmd = new SqlCommand(_sqlQuery, _con);
+                    //_sqlReader = _cmd.ExecuteReader();
+                    //_con.Close();
+                    
+
+
+                    _con.Open();
+                    string sql = "UPDATE [stamdata] SET (Navn, Dato) VALUES(@Navn, @Dato)";
+                    
+
+                    using (_sql_command = new SqlCommand(sql, _con))
+                    {
+                        _sql_command.Parameters.AddWithValue("@Navn", personale.Navn);
+                        _sql_command.Parameters.AddWithValue("@Dato", personale.Dato);
+                        var antalgemteRækker = _sql_command.ExecuteNonQuery();
+                        result = antalgemteRækker;
+                        _con.Close();
+                    }
+
+                }
+
+            }
+            catch (Exception ex)//catch exeption
+            {
+                _con.Close();
+                //displaying errors message.
+                MessageBox.Show(ex.Message);
+            }
+
+            return result;
+        }
+
+
 
         public int CreateBilInBil(Bil bil)
         {

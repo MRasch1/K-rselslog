@@ -31,13 +31,12 @@ namespace Kørselslog
         {
             DatabaseKørselslogDataSetTableAdapters.stamdataTableAdapter DataSetAdapter = new DatabaseKørselslogDataSetTableAdapters.stamdataTableAdapter();
 
-            //udfylder textboksen hvis ingen text - altså ved string.Empty
-            //textBox3.Text = textBox3.Text != string.Empty ? textBox3.Text : "BR12365";
+            //udfylder textboksen hvis ingen text - altså ved string.Empty            
             dateTimePicker1.Text = dateTimePicker1.Text != string.Empty ? dateTimePicker1.Text : "2001/10/12";
             textBox1.Text = textBox1.Text != string.Empty ? textBox1.Text : "Mathias";
 
             var p = new Personale() { Navn = textBox1.Text, /*NrPlade = textBox3.Text,*/ Dato = (DateTime.Parse(dateTimePicker1.Text)) };
-            int id = _repo.CreatePersonInPersonle(p);
+            int id = _repo.CreatePersonInPersonale(p);
         }
 
         private void button9_Save_Click(object sender, EventArgs e)
@@ -112,6 +111,18 @@ namespace Kørselslog
             _con.Open();
             listView1.Clear();
             _con.Close();
+        }
+
+        private void button12_Form2_RedigerPerson_Click(object sender, EventArgs e)
+        {
+            Form2 form2 = new Form2();
+            form2.ShowDialog();
+        }
+
+        private void button13_Form3_RedigerBil_Click(object sender, EventArgs e)
+        {
+            Form3 form3 = new Form3();
+            form3.ShowDialog();
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -274,6 +285,13 @@ namespace Kørselslog
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

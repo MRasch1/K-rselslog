@@ -49,6 +49,8 @@ namespace Kørselslog
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.OpretStamdata = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button13 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
             this.RedigerStamdata = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
@@ -70,11 +72,11 @@ namespace Kørselslog
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
             this.label14 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -254,6 +256,8 @@ namespace Kørselslog
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.button13);
+            this.panel2.Controls.Add(this.button12);
             this.panel2.Controls.Add(this.RedigerStamdata);
             this.panel2.Cursor = System.Windows.Forms.Cursors.Default;
             this.panel2.Location = new System.Drawing.Point(224, 43);
@@ -261,6 +265,26 @@ namespace Kørselslog
             this.panel2.Size = new System.Drawing.Size(210, 264);
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(59, 121);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(89, 31);
+            this.button13.TabIndex = 3;
+            this.button13.Text = "Bil";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Form3_RedigerBil_Click);
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(59, 60);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(89, 32);
+            this.button12.TabIndex = 2;
+            this.button12.Text = "Person";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Form2_RedigerPerson_Click);
             // 
             // RedigerStamdata
             // 
@@ -302,6 +326,7 @@ namespace Kørselslog
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(67, 21);
             this.comboBox2.TabIndex = 13;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // button5
             // 
@@ -472,6 +497,16 @@ namespace Kørselslog
             this.panel5.Size = new System.Drawing.Size(398, 236);
             this.panel5.TabIndex = 13;
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(30, 65);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(59, 41);
+            this.button4.TabIndex = 22;
+            this.button4.Text = "Person Data";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_show_Person_Click);
+            // 
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(30, 187);
@@ -513,16 +548,6 @@ namespace Kørselslog
             this.label14.Text = "Se stamdata:";
             this.label14.Click += new System.EventHandler(this.label14_Click);
             // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(30, 65);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(59, 41);
-            this.button4.TabIndex = 22;
-            this.button4.Text = "Person Data";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_show_Person_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -543,6 +568,7 @@ namespace Kørselslog
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Text = "Kørselslog";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -609,6 +635,8 @@ namespace Kørselslog
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button button12;
     }
 }
 
