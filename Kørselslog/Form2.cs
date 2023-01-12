@@ -15,18 +15,16 @@ namespace Kørselslog
     {
         RepoDB _repo;
         private SqlConnection _con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=H:\Visual Studio\Kørselslog\Kørselslog\DatabaseKørselslog.mdf;Integrated Security=True");
-        private SqlCommand _cmd;
-        private DataTable _dataTable;
-        private SqlDataAdapter _dataAdapter;
-        private DataSet _dataSet;
-        private SqlDataReader _sqlReader;
-        string _sqlQuery;
+        string _connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=H:\Visual Studio\Kørselslog\Kørselslog\DatabaseKørselslog.mdf;Integrated Security=True";
+
+
 
 
         public Form2()
         {
             InitializeComponent();
             _repo = new RepoDB();
+            _con.ConnectionString = _connectionString;
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -47,10 +45,32 @@ namespace Kørselslog
 
             //DatabaseKørselslogDataSetTableAdapters.stamdataTableAdapter DataSetAdapter = new DatabaseKørselslogDataSetTableAdapters.stamdataTableAdapter();
 
-            _sqlQuery = "UPDATE [stamdata] SET [Navn, Dato] ='" + textBox1.Text + "'Where [Navn] ='" + textBox2.Text + "'" + dateTimePicker1.Text + "'Where[Dato] = '" + dateTimePicker2.Text + "'";
+            //_sqlQuery = "UPDATE [stamdata] SET [Navn, Dato] ='" + textBox1.Text + "'Where [Navn] ='" + textBox2.Text + "'" + dateTimePicker1.Text + "'Where[Dato] = '" + dateTimePicker2.Text + "'";
 
-            var p = new Personale();
+            var p = new Personale() {Navn = textBox1.Text, OpdaterNavn = textBox2.Text, OpdaterDato = DateTime.Parse(dateTimePicker2.Text)};
             int id = _repo.UpdatePersonInPersonale(p);
+        }
+
+        
+
+        public List<Personale> Readall()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Update(Personale p)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void textBox1_TextChanged_form2(object sender, EventArgs e)
@@ -111,5 +131,7 @@ namespace Kørselslog
         {
             throw new NotImplementedException();
         }
+
+        
     }
 }
