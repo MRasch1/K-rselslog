@@ -10,6 +10,8 @@ namespace Kørselslog
     {
         private SqlConnection _con = new SqlConnection();
         private SqlCommand _sql_command = new SqlCommand();
+        private bool _hasRows;
+        private string _sql;
         //private SqlDataReader _sqlReader;
         string _connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=H:\Visual Studio\Kørselslog\Kørselslog\DatabaseKørselslog.mdf;Integrated Security=True";
         public RepoDB()
@@ -21,7 +23,7 @@ namespace Kørselslog
 
         public int CreatePersonInPersonale(Personale personale)
         {
-            int result = -1; 
+            int result = -1;
             try
             {
                 // Open the connection.
@@ -50,7 +52,7 @@ namespace Kørselslog
             return result;
         }
 
-        
+
 
         public List<Personale> Readall()
         {
@@ -67,40 +69,59 @@ namespace Kørselslog
             throw new NotImplementedException();
         }
 
-        public int UpdatePersonInPersonale(Personale personale)
+        public int SELECTPersonInPersonale(Personale personale)
         {
             int result = -1;
-            bool hasRows = false;
+            _hasRows = false;
 
             using (SqlConnection cn = new SqlConnection(_connectionString))
             {
                 string commandText = "SELECT Navn FROM stamdata WHERE Navn = @Navn";
 
-                using (SqlCommand cm = new SqlCommand(commandText, cn))
-                {   
+                try
+                {
+                    cn.Open();
+                    using (SqlCommand cm = new SqlCommand(commandText, cn))
                     {
-                        cn.Open();
-                        cm.Parameters.AddWithValue("@Navn", personale.Navn);
-                        // store a value locally indicating if the previous update has rows.   
-                        hasRows = cm.ExecuteReader().HasRows;
+                        {
+                            cm.Parameters.AddWithValue("@Navn", personale.Navn);
+                            // store a value locally indicating if the previous update has rows.   
+                            _hasRows = cm.ExecuteReader().HasRows;
+                        }
                     }
-                    cn.Close();
                 }
+                catch (Exception ex)//catch exeption
+                {
+                    _con.Close();
+                    //displaying errors message.
+                    MessageBox.Show(ex.Message);
+                }
+                return result;
             }
-            string sql = "";
-            if (hasRows)
+
+        }
+
+        public int UPDATEPersonInPersonale(Personale personale)
+        {
+            Form1 form1 = new Form1();
+            show
+
+            int result = -1;
+            if (_hasRows)
             {
-                sql = "UPDATE [stamdata] SET Navn = @OpdaterNavn, Dato = @OpdaterDato WHERE Navn = @Navn";
+                _sql = "UPDATE [stamdata] SET Navn = @Navn, Dato = @Dato WHERE Navn = @Navn";
             }
             using (SqlConnection cn = new SqlConnection(_connectionString))
             {
                 try
                 {
-                    using (SqlCommand cm = new SqlCommand(sql, cn))
+                    cn.Open();
+                    using (SqlCommand cm = new SqlCommand(_sql, cn))
                     {
-                        cn.Open();
-                        cm.Parameters.AddWithValue("@OpdaterNavn", SqlDbType.VarChar).Value = personale.OpdaterNavn;
-                        cm.Parameters.AddWithValue("@OpdaterDato", SqlDbType.DateTime).Value = personale.OpdaterDato;
+                        _sql_command.Parameters.AddWithValue("@Navn", personale.OpdaterNavn);
+                        _sql_command.Parameters.AddWithValue("@Dato", personale.OpdaterDato);
+                        //cm.Parameters.AddWithValue("@OpdaterNavn", SqlDbType.VarChar).Value = personale.OpdaterNavn;
+                        //cm.Parameters.AddWithValue("@OpdaterDato", SqlDbType.DateTime).Value = personale.OpdaterDato;
                         var antalgemteRækker = cm.ExecuteNonQuery();
                         result = antalgemteRækker;
                         // store a value locally indicating if the previous update has rows.   
@@ -172,5 +193,5 @@ namespace Kørselslog
             }
         }
     }
-    
+
 }

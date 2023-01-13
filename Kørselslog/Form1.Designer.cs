@@ -505,7 +505,7 @@ namespace Kørselslog
             this.button4.TabIndex = 22;
             this.button4.Text = "Person Data";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_show_Person_Click);
+            this.button4.Click += new System.EventHandler(this.ShowPersonClick_Form1);
             // 
             // button3
             // 

@@ -34,21 +34,30 @@ namespace Kørselslog
 
         private void button1_Update_Click(object sender, EventArgs e)
         {
-            //_con.Open();
-            //_sqlQuery = "UPDATE [stamdata] SET [Navn] ='" + textBox1.Text + "'Where [Navn] ='" + textBox2.Text + "'";
-            ////sqlQuery = "INSERT INTO [User] ([Name], [NrPlade]) VALUES(" + "'" + textBox2.Text + "'" + ", " + "'" + textBox3.Text + "'" + ")";
-
-            //_cmd = new SqlCommand(_sqlQuery, _con);
-            //_sqlReader = _cmd.ExecuteReader();
-            //_con.Close();
-
-
-            //DatabaseKørselslogDataSetTableAdapters.stamdataTableAdapter DataSetAdapter = new DatabaseKørselslogDataSetTableAdapters.stamdataTableAdapter();
-
-            //_sqlQuery = "UPDATE [stamdata] SET [Navn, Dato] ='" + textBox1.Text + "'Where [Navn] ='" + textBox2.Text + "'" + dateTimePicker1.Text + "'Where[Dato] = '" + dateTimePicker2.Text + "'";
-
             var p = new Personale() {Navn = textBox1.Text, OpdaterNavn = textBox2.Text, OpdaterDato = DateTime.Parse(dateTimePicker2.Text)};
-            int id = _repo.UpdatePersonInPersonale(p);
+            int id = _repo.SELECTPersonInPersonale(p); 
+            _repo.UPDATEPersonInPersonale(p);
+
+            //// Sørger for at programmet ikke acceptere intet input fra bruger.
+            //if (p.OpdaterNavn == "" || p.OpdaterDato == DateTime.Now)
+            //{
+            //    // Pop up fejlmeddelelse.
+            //    MessageBox.Show("Alle felter skal udfyldes");
+            //}
+            //else
+            //{
+            //    _con.Open();
+
+            //    // Executer stored procedure SQL command som opdatere dataen.
+            //    SqlCommand cmd = new SqlCommand("EXEC UpdateData '" + p.OpdaterNavn + "','" + p.OpdaterDato + "'", _con);
+            //    cmd.ExecuteNonQuery();
+
+            //    // Pop up for at fortælle brugeren at dataen er blevet opdateret.
+            //    MessageBox.Show("Data opdateret");
+            //    _con.Close();
+            //}
+
+
         }
 
         
@@ -75,7 +84,7 @@ namespace Kørselslog
 
         private void textBox1_TextChanged_form2(object sender, EventArgs e)
         {
-
+             
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)

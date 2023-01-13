@@ -35,7 +35,7 @@ namespace Kørselslog
             dateTimePicker1.Text = dateTimePicker1.Text != string.Empty ? dateTimePicker1.Text : "2001/10/12";
             textBox1.Text = textBox1.Text != string.Empty ? textBox1.Text : "Mathias";
 
-            var p = new Personale() { Navn = textBox1.Text, /*NrPlade = textBox3.Text,*/ Dato = (DateTime.Parse(dateTimePicker1.Text)) };
+            var p = new Personale() { Navn = textBox1.Text, Dato = DateTime.Parse(dateTimePicker1.Text) };
             int id = _repo.CreatePersonInPersonale(p);
         }
 
@@ -49,7 +49,7 @@ namespace Kørselslog
             int id = _repo.CreateBilInBil(p);
         }
 
-        private void button4_show_Person_Click(object sender, EventArgs e)
+        private void ShowPersonClick_Form1(object sender, EventArgs e)
         {
             _con.Open(); listView1.Clear(); _con.Close();
 
@@ -105,6 +105,8 @@ namespace Kørselslog
 
 
         }
+
+    
 
         private void ClearListView1(object sender, EventArgs e)
         {
