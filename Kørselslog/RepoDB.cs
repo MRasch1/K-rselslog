@@ -104,7 +104,7 @@ namespace Kørselslog
         public int UPDATEPersonInPersonale(Personale personale)
         {
             Form1 form1 = new Form1();
-            show
+            
 
             int result = -1;
             if (_hasRows)
