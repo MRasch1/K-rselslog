@@ -34,6 +34,8 @@ namespace Kørselslog
             InitializeComponent();
             _repo = new RepoDB();
             _con.ConnectionString = _connectionString;
+
+            
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -73,6 +75,7 @@ namespace Kørselslog
         private void button1_form2_Click(object sender, EventArgs e)
         {
             
+            this.button1.Hide
 
             _con.Open(); listView1.Clear(); _con.Close();
 
