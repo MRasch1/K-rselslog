@@ -76,15 +76,16 @@ namespace Kørselslog
 
             using (SqlConnection cn = new SqlConnection(_connectionString))
             {
-                string commandText = "SELECT Navn FROM stamdata WHERE Navn = @Navn";
+                SqlCommand sqlCommand = new SqlCommand("SELECT Navn, Dato FROM stamdata WHERE Id = @Id");
 
                 try
                 {
                     cn.Open();
-                    using (SqlCommand cm = new SqlCommand(commandText, cn))
+                    using (SqlCommand cm = new SqlCommand())
                     {
                         {
-                            cm.Parameters.AddWithValue("@Navn", personale.Navn);
+                            var reader = sqlCommand.ExecuteReader();
+
                             // store a value locally indicating if the previous update has rows.   
                             _hasRows = cm.ExecuteReader().HasRows;
                         }
