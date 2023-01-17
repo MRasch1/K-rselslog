@@ -76,7 +76,7 @@ namespace Kørselslog
 
             using (SqlConnection cn = new SqlConnection(_connectionString))
             {
-                SqlCommand sqlCommand = new SqlCommand("SELECT Navn, Dato FROM stamdata WHERE Id = @Id");
+                SqlCommand sqlCommand = new SqlCommand("SELECT Navn, Dato FROM stamdata WHERE Person_ID = @Person_ID");
 
                 try
                 {

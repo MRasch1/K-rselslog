@@ -53,7 +53,7 @@ namespace Kørselslog
         {
             _con.Open(); listView1.Clear(); _con.Close();
 
-            listView1.Columns.Add("ID", 30, HorizontalAlignment.Left);
+            listView1.Columns.Add("Person_ID", 63, HorizontalAlignment.Left);
             listView1.Columns.Add("Navn", 100, HorizontalAlignment.Center);
             listView1.Columns.Add("Dato", 80, HorizontalAlignment.Center);
             listView1.View = View.Details;
@@ -79,7 +79,7 @@ namespace Kørselslog
         {
             _con.Open(); listView1.Clear(); _con.Close();
 
-            listView1.Columns.Add("ID", 30, HorizontalAlignment.Left);
+            listView1.Columns.Add("Bil_ID", 50, HorizontalAlignment.Left);
             listView1.Columns.Add("Navn", 70, HorizontalAlignment.Center);
             listView1.Columns.Add("NrPlade", 80, HorizontalAlignment.Center);
             listView1.Columns.Add("Dato", 80, HorizontalAlignment.Center);

@@ -75,11 +75,11 @@ namespace Kørselslog
         private void button1_form2_Click(object sender, EventArgs e)
         {
             
-            this.button1.Hide
+            this.button1.Hide();
 
             _con.Open(); listView1.Clear(); _con.Close();
 
-            listView1.Columns.Add("ID", 90, HorizontalAlignment.Left);
+            listView1.Columns.Add("Person_ID", 90, HorizontalAlignment.Left);
             listView1.Columns.Add("Navn", 100, HorizontalAlignment.Center);
             listView1.Columns.Add("Dato", 80, HorizontalAlignment.Center);
             listView1.View = View.Details;
