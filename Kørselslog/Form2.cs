@@ -24,8 +24,7 @@ namespace Kørselslog
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            this.button1_form2_Click(null, null);
-
+            GetNewDataSetDriver();
         }
 
 
@@ -37,18 +36,14 @@ namespace Kørselslog
             _con.ConnectionString = _connectionString;            
         }
 
-        private void Form2_Load(object sender, EventArgs e)
-        {
-            
-
-        }
-
         private void button1_Update_Click(object sender, EventArgs e)
         {
             var p = new Personale() {Id = int.Parse(textBox1.Text), OpdaterNavn = textBox2.Text, OpdaterDato = DateTime.Parse(dateTimePicker2.Text)};
             int id = _repo.SELECTPersonInPersonale(p);
             _repo.UPDATEPersonInPersonale(p);
-            this.button1_form2_Click(null, null);
+            //this.button1_form2_Click(null, null);
+            GetNewDataSetDriver();
+
 
             //// Sørger for at programmet ikke acceptere intet input fra bruger.
             //if (p.OpdaterNavn == "" || p.OpdaterDato == DateTime.Now)
@@ -72,11 +67,20 @@ namespace Kørselslog
 
         }
 
-        private void button1_form2_Click(object sender, EventArgs e)
+        private void GetNewDataSetDriver()
         {
-            
-            this.button1.Hide();
+            var dataTable = GetDriverDataTable();
 
+            for (int i = 0; i <= dataTable.Rows.Count - 1; i++)
+            {
+                listView1.Items.Add(dataTable.Rows[i].ItemArray[0].ToString());
+                listView1.Items[i].SubItems.Add(dataTable.Rows[i].ItemArray[1].ToString());
+                listView1.Items[i].SubItems.Add(dataTable.Rows[i].ItemArray[2].ToString());
+            }
+        }
+
+        private DataTable GetDriverDataTable()
+        {
             _con.Open(); listView1.Clear(); _con.Close();
 
             listView1.Columns.Add("Person_ID", 90, HorizontalAlignment.Left);
@@ -88,17 +92,13 @@ namespace Kørselslog
             _cmd = new SqlCommand("select * from stamdata", _con);
             _dataAdapter = new SqlDataAdapter(_cmd);
             _dataSet = new DataSet();
-            _dataAdapter.Fill(_dataSet, "StamTable");
+            int numberOFRowsAddedToDataSet = _dataAdapter.Fill(_dataSet, "StamTable");
             _con.Close();
 
-            _dataTable = _dataSet.Tables["StamTable"];
 
-            for (int i = 0; i <= _dataTable.Rows.Count - 1; i++)
-            {
-                listView1.Items.Add(_dataTable.Rows[i].ItemArray[0].ToString());
-                listView1.Items[i].SubItems.Add(_dataTable.Rows[i].ItemArray[1].ToString());
-                listView1.Items[i].SubItems.Add(_dataTable.Rows[i].ItemArray[2].ToString());
-            }
+            DataTable dataTable = _dataSet.Tables["StamTable"];
+
+            return dataTable;
         }
 
         private void listView1_form2_ShowPersoner(object sender, EventArgs e)
