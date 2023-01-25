@@ -25,6 +25,7 @@ namespace Kørselslog
         {
             base.OnShown(e);
             this.button1_form2_Click(null, null);
+
         }
 
 
@@ -33,9 +34,7 @@ namespace Kørselslog
         {
             InitializeComponent();
             _repo = new RepoDB();
-            _con.ConnectionString = _connectionString;
-
-            
+            _con.ConnectionString = _connectionString;            
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -46,9 +45,10 @@ namespace Kørselslog
 
         private void button1_Update_Click(object sender, EventArgs e)
         {
-            var p = new Personale() {Navn = textBox1.Text, OpdaterNavn = textBox2.Text, OpdaterDato = DateTime.Parse(dateTimePicker2.Text)};
+            var p = new Personale() {Id = int.Parse(textBox1.Text), OpdaterNavn = textBox2.Text, OpdaterDato = DateTime.Parse(dateTimePicker2.Text)};
             int id = _repo.SELECTPersonInPersonale(p);
             _repo.UPDATEPersonInPersonale(p);
+            this.button1_form2_Click(null, null);
 
             //// Sørger for at programmet ikke acceptere intet input fra bruger.
             //if (p.OpdaterNavn == "" || p.OpdaterDato == DateTime.Now)
@@ -185,6 +185,9 @@ namespace Kørselslog
             throw new NotImplementedException();
         }
 
-        
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
