@@ -66,9 +66,9 @@
       <DependentUpon>DatabaseKørselslogDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="DatabaseKørselslogDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseKørselslogDataSet.xsd</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Form2.cs">
       <SubType>Form</SubType>
@@ -116,9 +116,9 @@
       <DependentUpon>DatabaseKørselslogDataSet.xsd</DependentUpon>
     </None>
     <None Include="DatabaseKørselslogDataSet.xsd">
+      <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>DatabaseKørselslogDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </None>
     <None Include="DatabaseKørselslogDataSet.xss">
       <DependentUpon>DatabaseKørselslogDataSet.xsd</DependentUpon>

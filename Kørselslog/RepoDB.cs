@@ -22,16 +22,15 @@ namespace Kørselslog
         {
             int result = -1;
 
-
             // Open the connection.
-            using (SqlConnection conn = new SqlConnection(_connectionString))
+            using (var conn = new SqlConnection(_connectionString))
             {
                 try
                 {
                     conn.Open();
                     string sql = "INSERT INTO stamdata (Navn,Dato) VALUES(@Navn,@Dato)";
 
-                    using (SqlCommand sqlCommand = new SqlCommand(sql, conn))
+                    using (var sqlCommand = new SqlCommand(sql, conn))
                     {
                         sqlCommand.Parameters.AddWithValue("@Navn", personale.Navn);
                         sqlCommand.Parameters.AddWithValue("@Dato", personale.Dato);
@@ -69,9 +68,9 @@ namespace Kørselslog
             int result = -1;
             _hasRows = false;
 
-            using (SqlConnection con = new SqlConnection(_connectionString))
+            using (var con = new SqlConnection(_connectionString))
             {
-                using (SqlCommand sqlCommand = new SqlCommand("SELECT Navn, Dato FROM stamdata WHERE Person_ID = @Person_ID", con))
+                using (var sqlCommand = new SqlCommand("SELECT Navn, Dato FROM stamdata WHERE Person_ID = @Person_ID", con))
                 {
                     sqlCommand.Parameters.AddWithValue("@Person_ID", personale.Id);
                     try
@@ -100,12 +99,12 @@ namespace Kørselslog
             if (!_hasRows) return result;
             string sql = "UPDATE [stamdata] SET Navn = @Navn, Dato = @Dato WHERE Person_ID = @Person_ID";
 
-            using (SqlConnection conn = new SqlConnection(_connectionString))
+            using (var conn = new SqlConnection(_connectionString))
             {
                 try
                 {
                     conn.Open();
-                    using (SqlCommand sqlCommand = new SqlCommand(sql, conn))
+                    using (var sqlCommand = new SqlCommand(sql, conn))
                     {
                         sqlCommand.Parameters.AddWithValue("@Navn", personale.OpdaterNavn);
                         sqlCommand.Parameters.AddWithValue("@Dato", personale.OpdaterDato);
@@ -127,18 +126,40 @@ namespace Kørselslog
             }
             return result;
         }
+        public DataTable GetPersonDataTable()
+        {
+            SqlDataAdapter dataAdapter = null;
+            DataTable dataTable = null;
+
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+                var _dataSet = new DataSet();
+
+                using (var _cmd = new SqlCommand("select * from stamdata", conn))
+                {
+                    dataAdapter = new SqlDataAdapter(_cmd);
+                    int numberOFRowsAddedToDataSet = dataAdapter.Fill(_dataSet, "StamTable");
+                }
+
+                dataTable = _dataSet.Tables["StamTable"];
+                conn.Close();
+            }
+            return dataTable;
+        }
+
         public int CreateBilInBil(Bil bil)
         {
             int result = -1;
             // Open the connection.
-            using (SqlConnection conn = new SqlConnection(_connectionString))
+            using (var conn = new SqlConnection(_connectionString))
             {
                 try
                 {
                     conn.Open();
                     string sql = "INSERT INTO Bildata (Navn,NrPlade,Dato) VALUES(@Navn,@NrPlade,@Dato)";
 
-                    using (SqlCommand sqlCommand = new SqlCommand(sql, conn))
+                    using (var sqlCommand = new SqlCommand(sql, conn))
                     {
                         sqlCommand.Parameters.AddWithValue("@Navn", bil.Navn);
                         sqlCommand.Parameters.AddWithValue("@NrPlade", bil.NrPlade);
@@ -162,9 +183,9 @@ namespace Kørselslog
             int result = -1;
             _hasRows = false;
 
-            using (SqlConnection con = new SqlConnection(_connectionString))
+            using (var con = new SqlConnection(_connectionString))
             {
-                using (SqlCommand sqlCommand = new SqlCommand("SELECT Navn, NrPlade, Dato FROM BilData WHERE Bil_ID = @Bil_ID", con))
+                using (var sqlCommand = new SqlCommand("SELECT Navn, NrPlade, Dato FROM BilData WHERE Bil_ID = @Bil_ID", con))
                 {
                     sqlCommand.Parameters.AddWithValue("@Bil_ID", bil.Id);
                     try
@@ -192,12 +213,12 @@ namespace Kørselslog
             if (!_hasRows) return result;
             string sql = "UPDATE [BilData] SET Navn = @BilNavn, Nrplade = @NrPlade, Dato = @Dato WHERE Bil_ID = @Bil_ID";
 
-            using (SqlConnection conn = new SqlConnection(_connectionString))
+            using (var conn = new SqlConnection(_connectionString))
             {
                 try
                 {
                     conn.Open();
-                    using (SqlCommand sqlCommand = new SqlCommand(sql, conn))
+                    using (var sqlCommand = new SqlCommand(sql, conn))
                     {
                         sqlCommand.Parameters.AddWithValue("@BilNavn", bil.OpdaterNavn);
                         sqlCommand.Parameters.AddWithValue("@NrPlade", bil.OpdaterNrPlade);
@@ -220,5 +241,27 @@ namespace Kørselslog
             }
             return result;
         }
+        public DataTable GetBilDataTable()
+        {
+            SqlDataAdapter dataAdapter = null;
+            DataTable dataTable = null;
+
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+                var _dataSet = new DataSet();
+
+                using (var _cmd = new SqlCommand("select * from BilData", conn))
+                {
+                    dataAdapter = new SqlDataAdapter(_cmd);
+                    int numberOFRowsAddedToDataSet = dataAdapter.Fill(_dataSet, "StamTable");
+                }
+
+                dataTable = _dataSet.Tables["StamTable"];
+                conn.Close();
+            }
+            return dataTable;
+        }
+
     }
 }

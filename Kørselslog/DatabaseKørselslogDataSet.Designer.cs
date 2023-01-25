@@ -279,13 +279,11 @@ namespace Kørselslog {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class stamdataDataTable : global::System.Data.TypedTableBase<stamdataRow> {
             
-            private global::System.Data.DataColumn columnId;
-            
             private global::System.Data.DataColumn columnNavn;
             
             private global::System.Data.DataColumn columnDato;
             
-            private global::System.Data.DataColumn columnNr_Plade;
+            private global::System.Data.DataColumn columnPerson_ID;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -322,14 +320,6 @@ namespace Kørselslog {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn IdColumn {
-                get {
-                    return this.columnId;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn NavnColumn {
                 get {
                     return this.columnNavn;
@@ -346,9 +336,9 @@ namespace Kørselslog {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn Nr_PladeColumn {
+            public global::System.Data.DataColumn Person_IDColumn {
                 get {
-                    return this.columnNr_Plade;
+                    return this.columnPerson_ID;
                 }
             }
             
@@ -389,13 +379,12 @@ namespace Kørselslog {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public stamdataRow AddstamdataRow(string Navn, System.DateTime Dato, string Nr_Plade) {
+            public stamdataRow AddstamdataRow(string Navn, System.DateTime Dato) {
                 stamdataRow rowstamdataRow = ((stamdataRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
                         Navn,
                         Dato,
-                        Nr_Plade};
+                        null};
                 rowstamdataRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowstamdataRow);
                 return rowstamdataRow;
@@ -403,9 +392,9 @@ namespace Kørselslog {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public stamdataRow FindById(int Id) {
+            public stamdataRow FindByPerson_ID(int Person_ID) {
                 return ((stamdataRow)(this.Rows.Find(new object[] {
-                            Id})));
+                            Person_ID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -425,33 +414,29 @@ namespace Kørselslog {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
-                this.columnId = base.Columns["Id"];
                 this.columnNavn = base.Columns["Navn"];
                 this.columnDato = base.Columns["Dato"];
-                this.columnNr_Plade = base.Columns["Nr_Plade"];
+                this.columnPerson_ID = base.Columns["Person_ID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnId);
                 this.columnNavn = new global::System.Data.DataColumn("Navn", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNavn);
                 this.columnDato = new global::System.Data.DataColumn("Dato", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDato);
-                this.columnNr_Plade = new global::System.Data.DataColumn("Nr_Plade", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNr_Plade);
+                this.columnPerson_ID = new global::System.Data.DataColumn("Person_ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPerson_ID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnId}, true));
-                this.columnId.AutoIncrement = true;
-                this.columnId.AutoIncrementSeed = -1;
-                this.columnId.AutoIncrementStep = -1;
-                this.columnId.AllowDBNull = false;
-                this.columnId.ReadOnly = true;
-                this.columnId.Unique = true;
+                                this.columnPerson_ID}, true));
                 this.columnNavn.MaxLength = 20;
-                this.columnNr_Plade.MaxLength = 20;
+                this.columnPerson_ID.AutoIncrement = true;
+                this.columnPerson_ID.AutoIncrementSeed = -1;
+                this.columnPerson_ID.AutoIncrementStep = -1;
+                this.columnPerson_ID.AllowDBNull = false;
+                this.columnPerson_ID.ReadOnly = true;
+                this.columnPerson_ID.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -594,17 +579,6 @@ namespace Kørselslog {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int Id {
-                get {
-                    return ((int)(this[this.tablestamdata.IdColumn]));
-                }
-                set {
-                    this[this.tablestamdata.IdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string Navn {
                 get {
                     try {
@@ -637,17 +611,12 @@ namespace Kørselslog {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Nr_Plade {
+            public int Person_ID {
                 get {
-                    try {
-                        return ((string)(this[this.tablestamdata.Nr_PladeColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Nr_Plade\' in table \'stamdata\' is DBNull.", e);
-                    }
+                    return ((int)(this[this.tablestamdata.Person_IDColumn]));
                 }
                 set {
-                    this[this.tablestamdata.Nr_PladeColumn] = value;
+                    this[this.tablestamdata.Person_IDColumn] = value;
                 }
             }
             
@@ -673,18 +642,6 @@ namespace Kørselslog {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetDatoNull() {
                 this[this.tablestamdata.DatoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsNr_PladeNull() {
-                return this.IsNull(this.tablestamdata.Nr_PladeColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetNr_PladeNull() {
-                this[this.tablestamdata.Nr_PladeColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -847,10 +804,9 @@ namespace Kørselslog.DatabaseKørselslogDataSetTableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "stamdata";
-            tableMapping.ColumnMappings.Add("Id", "Id");
             tableMapping.ColumnMappings.Add("Navn", "Navn");
             tableMapping.ColumnMappings.Add("Dato", "Dato");
-            tableMapping.ColumnMappings.Add("Nr.Plade", "Nr_Plade");
+            tableMapping.ColumnMappings.Add("Person_ID", "Person_ID");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -867,7 +823,7 @@ namespace Kørselslog.DatabaseKørselslogDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, Navn, Dato, [Nr.Plade] FROM dbo.stamdata";
+            this._commandCollection[0].CommandText = "SELECT Person_ID, Navn, Dato FROM dbo.stamdata";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = new global::System.Data.SqlClient.SqlConnection(global::Kørselslog.Properties.Settings.Default.PersonaleConnectionString);

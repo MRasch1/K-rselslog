@@ -41,7 +41,6 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -57,7 +56,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(210, 264);
             this.panel2.TabIndex = 2;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // label1
             // 
@@ -67,7 +65,6 @@
             this.label1.Size = new System.Drawing.Size(49, 13);
             this.label1.TabIndex = 6;
             this.label1.Text = "Vælg ID:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // textBox1
             // 
@@ -75,7 +72,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(108, 20);
             this.textBox1.TabIndex = 3;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_form2);
             // 
             // RedigerStamdata
             // 
@@ -86,7 +82,6 @@
             this.RedigerStamdata.Size = new System.Drawing.Size(105, 20);
             this.RedigerStamdata.TabIndex = 1;
             this.RedigerStamdata.Text = "Vælg Person:";
-            this.RedigerStamdata.Click += new System.EventHandler(this.RedigerStamdata_Click);
             // 
             // panel1
             // 
@@ -129,7 +124,7 @@
             this.button2.TabIndex = 5;
             this.button2.Text = "Update";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button1_Update_Click);
+            this.button2.Click += new System.EventHandler(this.button2_Update_Click);
             // 
             // dateTimePicker2
             // 
@@ -137,7 +132,6 @@
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(108, 20);
             this.dateTimePicker2.TabIndex = 4;
-            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // textBox2
             // 
@@ -145,7 +139,6 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(108, 20);
             this.textBox2.TabIndex = 3;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label5
             // 
@@ -165,7 +158,6 @@
             this.listView1.Size = new System.Drawing.Size(303, 264);
             this.listView1.TabIndex = 9;
             this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_form2_ShowPersoner);
             // 
             // Form2
             // 
@@ -174,7 +166,6 @@
             this.BackgroundImage = global::Kørselslog.Properties.Resources.taxi_baggrundsbillede;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
@@ -203,6 +194,5 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.Button button1;
     }
 }

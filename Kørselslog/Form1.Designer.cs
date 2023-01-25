@@ -106,7 +106,6 @@ namespace Kørselslog
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(210, 264);
             this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // button10
             // 
@@ -160,7 +159,6 @@ namespace Kørselslog
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(100, 20);
             this.textBox5.TabIndex = 14;
-            this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
             // dateTimePicker3
             // 
@@ -168,7 +166,6 @@ namespace Kørselslog
             this.dateTimePicker3.Name = "dateTimePicker3";
             this.dateTimePicker3.Size = new System.Drawing.Size(100, 20);
             this.dateTimePicker3.TabIndex = 15;
-            this.dateTimePicker3.ValueChanged += new System.EventHandler(this.dateTimePicker3_ValueChanged);
             // 
             // textBox3
             // 
@@ -176,7 +173,6 @@ namespace Kørselslog
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 20);
             this.textBox3.TabIndex = 14;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // label13
             // 
@@ -187,7 +183,6 @@ namespace Kørselslog
             this.label13.Size = new System.Drawing.Size(71, 13);
             this.label13.TabIndex = 13;
             this.label13.Text = "Opret Bildata:";
-            this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
             // dateTimePicker1
             // 
@@ -195,7 +190,6 @@ namespace Kørselslog
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(100, 20);
             this.dateTimePicker1.TabIndex = 12;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // label2
             // 
@@ -205,7 +199,6 @@ namespace Kørselslog
             this.label2.Size = new System.Drawing.Size(33, 13);
             this.label2.TabIndex = 7;
             this.label2.Text = "Dato:";
-            this.label2.Click += new System.EventHandler(this.label5_Click_1);
             // 
             // label1
             // 
@@ -241,7 +234,6 @@ namespace Kørselslog
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 1;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
             // OpretStamdata
             // 
@@ -252,7 +244,6 @@ namespace Kørselslog
             this.OpretStamdata.Size = new System.Drawing.Size(110, 17);
             this.OpretStamdata.TabIndex = 0;
             this.OpretStamdata.Text = "Opret stamdata:";
-            this.OpretStamdata.Click += new System.EventHandler(this.OpretStamdata_Click);
             // 
             // panel2
             // 
@@ -264,7 +255,6 @@ namespace Kørselslog
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(210, 264);
             this.panel2.TabIndex = 1;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // button13
             // 
@@ -295,7 +285,6 @@ namespace Kørselslog
             this.RedigerStamdata.Size = new System.Drawing.Size(140, 20);
             this.RedigerStamdata.TabIndex = 1;
             this.RedigerStamdata.Text = "Rediger stamdata:";
-            this.RedigerStamdata.Click += new System.EventHandler(this.label2_Click);
             // 
             // panel3
             // 
@@ -326,7 +315,6 @@ namespace Kørselslog
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(67, 21);
             this.comboBox2.TabIndex = 13;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // button5
             // 
@@ -336,7 +324,6 @@ namespace Kørselslog
             this.button5.TabIndex = 12;
             this.button5.Text = "Ok";
             this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
@@ -346,7 +333,6 @@ namespace Kørselslog
             this.button6.TabIndex = 11;
             this.button6.Text = "Cancel";
             this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // SletStamdata
             // 
@@ -357,7 +343,6 @@ namespace Kørselslog
             this.SletStamdata.Size = new System.Drawing.Size(102, 18);
             this.SletStamdata.TabIndex = 1;
             this.SletStamdata.Text = "Slet stamdata:";
-            this.SletStamdata.Click += new System.EventHandler(this.label3_Click);
             // 
             // PersonaleData
             // 
@@ -368,7 +353,6 @@ namespace Kørselslog
             this.PersonaleData.TabIndex = 3;
             this.PersonaleData.Text = "Personale data:";
             this.PersonaleData.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.PersonaleData.Click += new System.EventHandler(this.label1_Click);
             // 
             // panel4
             // 
@@ -388,7 +372,6 @@ namespace Kørselslog
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(210, 236);
             this.panel4.TabIndex = 12;
-            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // label12
             // 
@@ -398,7 +381,6 @@ namespace Kørselslog
             this.label12.Size = new System.Drawing.Size(26, 13);
             this.label12.TabIndex = 13;
             this.label12.Text = "Tur:";
-            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // textBox8
             // 
@@ -469,7 +451,6 @@ namespace Kørselslog
             this.label11.Size = new System.Drawing.Size(132, 20);
             this.label11.TabIndex = 1;
             this.label11.Text = "Opret kørsels log:";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // textBox6
             // 
@@ -535,7 +516,6 @@ namespace Kørselslog
             this.listView1.Size = new System.Drawing.Size(286, 145);
             this.listView1.TabIndex = 1;
             this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // label14
             // 
@@ -546,7 +526,6 @@ namespace Kørselslog
             this.label14.Size = new System.Drawing.Size(104, 20);
             this.label14.TabIndex = 0;
             this.label14.Text = "Se stamdata:";
-            this.label14.Click += new System.EventHandler(this.label14_Click);
             // 
             // Form1
             // 
@@ -569,7 +548,6 @@ namespace Kørselslog
             this.Name = "Form1";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Text = "Kørselslog";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

@@ -13,17 +13,16 @@
               <DbSource ConnectionRef="DatabaseKørselslogConnectionString (Settings)" DbObjectName="dbo.stamdata" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT Id, Navn, Dato, [Nr.Plade] FROM dbo.stamdata</CommandText>
+                    <CommandText>SELECT Person_ID, Navn, Dato FROM dbo.stamdata</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
             </MainSource>
             <Mappings>
-              <Mapping SourceColumn="Id" DataSetColumn="Id" />
               <Mapping SourceColumn="Navn" DataSetColumn="Navn" />
               <Mapping SourceColumn="Dato" DataSetColumn="Dato" />
-              <Mapping SourceColumn="Nr.Plade" DataSetColumn="Nr_Plade" />
+              <Mapping SourceColumn="Person_ID" DataSetColumn="Person_ID" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="PersonaleConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertQuery" Modifier="Public" Name="InsertQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="InsertQuery">
@@ -49,25 +48,18 @@ SELECT Id, Navn, Dato, [Nr.Plade] FROM stamdata WHERE (Id = SCOPE_IDENTITY())</C
   <xs:element name="DatabaseKørselslogDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DatabaseKørselslogDataSet" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="DatabaseKørselslogDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="stamdata" msprop:Generator_RowEvHandlerName="stamdataRowChangeEventHandler" msprop:Generator_RowDeletedName="stamdataRowDeleted" msprop:Generator_RowDeletingName="stamdataRowDeleting" msprop:Generator_RowEvArgName="stamdataRowChangeEvent" msprop:Generator_TablePropName="stamdata" msprop:Generator_RowChangedName="stamdataRowChanged" msprop:Generator_RowChangingName="stamdataRowChanging" msprop:Generator_TableClassName="stamdataDataTable" msprop:Generator_RowClassName="stamdataRow" msprop:Generator_TableVarName="tablestamdata" msprop:Generator_UserTableName="stamdata">
+        <xs:element name="stamdata" msprop:Generator_RowEvHandlerName="stamdataRowChangeEventHandler" msprop:Generator_RowDeletedName="stamdataRowDeleted" msprop:Generator_RowDeletingName="stamdataRowDeleting" msprop:Generator_RowEvArgName="stamdataRowChangeEvent" msprop:Generator_TablePropName="stamdata" msprop:Generator_RowChangedName="stamdataRowChanged" msprop:Generator_UserTableName="stamdata" msprop:Generator_RowChangingName="stamdataRowChanging" msprop:Generator_RowClassName="stamdataRow" msprop:Generator_TableClassName="stamdataDataTable" msprop:Generator_TableVarName="tablestamdata">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_UserColumnName="Id" type="xs:int" />
-              <xs:element name="Navn" msprop:Generator_ColumnPropNameInRow="Navn" msprop:Generator_ColumnPropNameInTable="NavnColumn" msprop:Generator_ColumnVarNameInTable="columnNavn" msprop:Generator_UserColumnName="Navn" minOccurs="0">
+              <xs:element name="Navn" msprop:Generator_ColumnPropNameInTable="NavnColumn" msprop:Generator_ColumnPropNameInRow="Navn" msprop:Generator_UserColumnName="Navn" msprop:Generator_ColumnVarNameInTable="columnNavn" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="20" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Dato" msprop:Generator_ColumnPropNameInRow="Dato" msprop:Generator_ColumnPropNameInTable="DatoColumn" msprop:Generator_ColumnVarNameInTable="columnDato" msprop:Generator_UserColumnName="Dato" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="Nr_Plade" msprop:Generator_ColumnPropNameInRow="Nr_Plade" msprop:Generator_ColumnPropNameInTable="Nr_PladeColumn" msprop:Generator_ColumnVarNameInTable="columnNr_Plade" msprop:Generator_UserColumnName="Nr_Plade" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="20" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
+              <xs:element name="Dato" msprop:Generator_ColumnPropNameInTable="DatoColumn" msprop:Generator_ColumnPropNameInRow="Dato" msprop:Generator_UserColumnName="Dato" msprop:Generator_ColumnVarNameInTable="columnDato" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Person_ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="Person_ID" msprop:Generator_ColumnPropNameInTable="Person_IDColumn" msprop:Generator_ColumnVarNameInTable="columnPerson_ID" msprop:Generator_UserColumnName="Person_ID" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -75,7 +67,7 @@ SELECT Id, Navn, Dato, [Nr.Plade] FROM stamdata WHERE (Id = SCOPE_IDENTITY())</C
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:stamdata" />
-      <xs:field xpath="mstns:Id" />
+      <xs:field xpath="mstns:Person_ID" />
     </xs:unique>
   </xs:element>
 </xs:schema>
