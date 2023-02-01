@@ -147,6 +147,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>DatabaseKørselslog.mdf</DependentUpon>
     </Content>
+    <Content Include="Screenshots\table relations table 2023-02-01 083052.png" />
+    <Content Include="Screenshots\table stamdata 2023-02-01 082937.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
