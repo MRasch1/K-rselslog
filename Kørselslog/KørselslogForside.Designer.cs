@@ -303,7 +303,7 @@ namespace Kørselslog
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(89, 31);
             this.button14.TabIndex = 5;
-            this.button14.Text = "Kørselslog";
+            this.button14.Text = "Slet Kørselslog";
             this.button14.UseVisualStyleBackColor = true;
             // 
             // button6
@@ -312,7 +312,7 @@ namespace Kørselslog
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(89, 31);
             this.button6.TabIndex = 4;
-            this.button6.Text = "Bil";
+            this.button6.Text = "Slet Bil";
             this.button6.UseVisualStyleBackColor = true;
             // 
             // button5
@@ -321,7 +321,7 @@ namespace Kørselslog
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(89, 32);
             this.button5.TabIndex = 4;
-            this.button5.Text = "Person";
+            this.button5.Text = "Slet Person";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_SletPerson_Click);
             // 

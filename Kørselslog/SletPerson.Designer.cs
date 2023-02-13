@@ -30,15 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label14 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.databaseKørselslogDataSet = new Kørselslog.DatabaseKørselslogDataSet();
-            this.stamdataBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.stamdataTableAdapter = new Kørselslog.DatabaseKørselslogDataSetTableAdapters.stamdataTableAdapter();
             this.personIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.navnDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stamdataBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.databaseKørselslogDataSet = new Kørselslog.DatabaseKørselslogDataSet();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.stamdataTableAdapter = new Kørselslog.DatabaseKørselslogDataSetTableAdapters.stamdataTableAdapter();
+            this.stamdataBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseKørselslogDataSet)).BeginInit();
@@ -55,6 +56,49 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(398, 265);
             this.panel5.TabIndex = 14;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AutoGenerateColumns = false;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.personIDDataGridViewTextBoxColumn,
+            this.navnDataGridViewTextBoxColumn,
+            this.datoDataGridViewTextBoxColumn});
+            this.dataGridView2.DataSource = this.stamdataBindingSource;
+            this.dataGridView2.Location = new System.Drawing.Point(21, 55);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(343, 150);
+            this.dataGridView2.TabIndex = 3;
+            // 
+            // personIDDataGridViewTextBoxColumn
+            // 
+            this.personIDDataGridViewTextBoxColumn.DataPropertyName = "Person_ID";
+            this.personIDDataGridViewTextBoxColumn.HeaderText = "Person_ID";
+            this.personIDDataGridViewTextBoxColumn.Name = "personIDDataGridViewTextBoxColumn";
+            this.personIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // navnDataGridViewTextBoxColumn
+            // 
+            this.navnDataGridViewTextBoxColumn.DataPropertyName = "Navn";
+            this.navnDataGridViewTextBoxColumn.HeaderText = "Navn";
+            this.navnDataGridViewTextBoxColumn.Name = "navnDataGridViewTextBoxColumn";
+            // 
+            // datoDataGridViewTextBoxColumn
+            // 
+            this.datoDataGridViewTextBoxColumn.DataPropertyName = "Dato";
+            this.datoDataGridViewTextBoxColumn.HeaderText = "Dato";
+            this.datoDataGridViewTextBoxColumn.Name = "datoDataGridViewTextBoxColumn";
+            // 
+            // stamdataBindingSource
+            // 
+            this.stamdataBindingSource.DataMember = "stamdata";
+            this.stamdataBindingSource.DataSource = this.databaseKørselslogDataSet;
+            // 
+            // databaseKørselslogDataSet
+            // 
+            this.databaseKørselslogDataSet.DataSetName = "DatabaseKørselslogDataSet";
+            this.databaseKørselslogDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // button1
             // 
@@ -76,53 +120,14 @@
             this.label14.TabIndex = 0;
             this.label14.Text = "Slet person:";
             // 
-            // dataGridView2
-            // 
-            this.dataGridView2.AutoGenerateColumns = false;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.personIDDataGridViewTextBoxColumn,
-            this.navnDataGridViewTextBoxColumn,
-            this.datoDataGridViewTextBoxColumn});
-            this.dataGridView2.DataSource = this.stamdataBindingSource;
-            this.dataGridView2.Location = new System.Drawing.Point(21, 55);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(343, 150);
-            this.dataGridView2.TabIndex = 3;
-            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
-            // 
-            // databaseKørselslogDataSet
-            // 
-            this.databaseKørselslogDataSet.DataSetName = "DatabaseKørselslogDataSet";
-            this.databaseKørselslogDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // stamdataBindingSource
-            // 
-            this.stamdataBindingSource.DataMember = "stamdata";
-            this.stamdataBindingSource.DataSource = this.databaseKørselslogDataSet;
-            // 
             // stamdataTableAdapter
             // 
             this.stamdataTableAdapter.ClearBeforeFill = true;
             // 
-            // personIDDataGridViewTextBoxColumn
+            // stamdataBindingSource1
             // 
-            this.personIDDataGridViewTextBoxColumn.DataPropertyName = "Person_ID";
-            this.personIDDataGridViewTextBoxColumn.HeaderText = "Person_ID";
-            this.personIDDataGridViewTextBoxColumn.Name = "personIDDataGridViewTextBoxColumn";
-            this.personIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // navnDataGridViewTextBoxColumn
-            // 
-            this.navnDataGridViewTextBoxColumn.DataPropertyName = "Navn";
-            this.navnDataGridViewTextBoxColumn.HeaderText = "Navn";
-            this.navnDataGridViewTextBoxColumn.Name = "navnDataGridViewTextBoxColumn";
-            // 
-            // datoDataGridViewTextBoxColumn
-            // 
-            this.datoDataGridViewTextBoxColumn.DataPropertyName = "Dato";
-            this.datoDataGridViewTextBoxColumn.HeaderText = "Dato";
-            this.datoDataGridViewTextBoxColumn.Name = "datoDataGridViewTextBoxColumn";
+            this.stamdataBindingSource1.DataMember = "stamdata";
+            this.stamdataBindingSource1.DataSource = this.databaseKørselslogDataSet;
             // 
             // SletPerson
             // 
@@ -138,6 +143,7 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stamdataBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseKørselslogDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stamdataBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -156,5 +162,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn personIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn navnDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn datoDataGridViewTextBoxColumn;
-    }
+        private System.Windows.Forms.BindingSource stamdataBindingSource1;    }
 }

@@ -67,22 +67,28 @@ namespace Kørselslog
             throw new NotImplementedException();
         }
 
-        public int SELECTPersonInPersonale(Personale personale)
+        public Personale SELECTPersonInPersonaleById(int id)
         {
-            int result = -1;
-            _hasRows = false;
+            //List<Personale> result = new List<Personale>(); 
+            Personale person = new Personale();
 
             using (var con = new SqlConnection(_connectionString))
             {
-                using (var sqlCommand = new SqlCommand("SELECT Navn, Dato FROM stamdata WHERE Person_ID = @Person_ID", con))
+                using (var sqlCommand = new SqlCommand("SELECT Person_ID, Navn, Dato FROM stamdata WHERE Person_ID = @Person_ID", con))
                 {
-                    sqlCommand.Parameters.AddWithValue("@Person_ID", personale.Id);
+                    sqlCommand.Parameters.AddWithValue("@Person_ID", id);
                     try
                     {
                         con.Open();
                         //var reader = sqlCommand.ExecuteReader();
                         // store a value locally indicating if the previous update has rows.   
-                        _hasRows = sqlCommand.ExecuteReader().HasRows;
+                        var reader = sqlCommand.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            person.Id = reader.GetInt32(0);
+                            person.Navn = reader.GetString(1);
+                            person.Dato = reader.GetDateTime(2);
+                        }
                         con.Close();
                     }
                     catch (Exception ex)//catch exeption
@@ -91,16 +97,17 @@ namespace Kørselslog
                         //displaying errors message.
                         MessageBox.Show(ex.Message);
                     }
-                    return result;
+                    return person;
                 }
             }
-
         }
 
         public int UPDATEPersonInPersonale(Personale personale)
         {
             int result = -1;
-            if (!_hasRows) return result;
+
+            if (SELECTPersonInPersonaleById(personale.Id) == null) return result;
+
             string sql = "UPDATE [stamdata] SET Navn = @Navn, Dato = @Dato WHERE Person_ID = @Person_ID";
 
             using (var conn = new SqlConnection(_connectionString))
@@ -267,7 +274,27 @@ namespace Kørselslog
             return dataTable;
         }
 
-        
+        /// <summary>
+        /// <b>Returns</b> Returns true if a row is deleted
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns ></returns>
+        public bool DeletePerson(int id)
+        {
+            int lines = -1;
+
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+                using (SqlCommand sqlCommand = new SqlCommand("DELETE FROM stamdata WHERE Person_ID =@Id", conn))
+                {
+                    sqlCommand.Parameters.AddWithValue("@Id", id);
+                    lines = sqlCommand.ExecuteNonQuery();
+                }
+            }
+
+            return lines > 0;
+        }
     }
 
 }

@@ -19,36 +19,43 @@ namespace Kørselslog
             InitializeComponent();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void SletPerson_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'databaseKørselslogDataSet.stamdata' table. You can move, or remove it, as needed.
+            this.stamdataTableAdapter.Fill(this.databaseKørselslogDataSet.stamdata);
 
         }
+
         private void button1_Slet_Click(object sender, EventArgs e)
         {
-            RefreshGridView();
             foreach (DataGridViewRow item in this.dataGridView2.SelectedRows)
             {
-                using (var conn = new SqlConnection(_connectionString))
-                {
-                    conn.Open();
-                    SqlCommand sqlCommand = new SqlCommand("DELETE FROM stamdata WHERE Person_ID =@Index", conn);
-                    sqlCommand.Parameters.AddWithValue("@Index", item.Index);
-                    int i = sqlCommand.ExecuteNonQuery();
+                var succes = new RepoDB().DeletePerson((item.DataBoundItem as Personale).Id);
 
-                    if (i != 0)
-                    {
-                        dataGridView2.Rows.RemoveAt(item.Index);
-                        MessageBox.Show("Delete Successful!", "Great", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        conn.Close();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Delete Failed!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        conn.Close();
-                    }
+                if (succes)
+                {
+                    dataGridView2.Rows.RemoveAt(item.Index);
+                    MessageBox.Show("Delete Successful!", "Great", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                else
+                {
+                    MessageBox.Show("Delete Failed!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            RefreshGridView();
+        }
+
+        private List<string> GetUsers()
+        {
+            List<string> users = null; /*new RepoDB().SelectPersonInPersonale();*/
+            BindingSource source = new BindingSource();
+            source.DataSource = users;
+            dataGridView2.DataSource = source;
+
+            users = GetUsers();
+            source.ResetBindings(false);
+
+            return users;
         }
 
         private void RefreshGridView()
@@ -61,19 +68,13 @@ namespace Kørselslog
                 });
             }
             else
+            {
                 dataGridView2.Refresh();
+            }
         }
 
-        private void SletPerson_Load(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'databaseKørselslogDataSet.stamdata' table. You can move, or remove it, as needed.
-            this.stamdataTableAdapter.Fill(this.databaseKørselslogDataSet.stamdata);
 
-        }
 
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
-        }
     }
 }

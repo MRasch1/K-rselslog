@@ -30,7 +30,7 @@ namespace Kørselslog
         private void button2_Update_Click(object sender, EventArgs e)
         {
             var p = new Personale() {Id = int.Parse(textBox1.Text), OpdaterNavn = textBox2.Text, OpdaterDato = DateTime.Parse(dateTimePicker2.Text)};
-            int id = _repo.SELECTPersonInPersonale(p);
+            
             _repo.UPDATEPersonInPersonale(p);
             //this.button1_form2_Click(null, null);
             GetNewDataSetPerson();
