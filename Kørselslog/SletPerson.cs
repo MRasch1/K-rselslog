@@ -12,6 +12,7 @@ namespace Kørselslog
 {
     public partial class SletPerson : Form
     {
+        RepoDB _repo;
         private readonly string _connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=H:\Visual Studio\Kørselslog\Kørselslog\DatabaseKørselslog.mdf;Integrated Security=True";
 
         public SletPerson()
@@ -24,57 +25,41 @@ namespace Kørselslog
             // TODO: This line of code loads data into the 'databaseKørselslogDataSet.stamdata' table. You can move, or remove it, as needed.
             this.stamdataTableAdapter.Fill(this.databaseKørselslogDataSet.stamdata);
 
+            load_data();
+        }
+
+        private void load_data()
+        {
+            dataGridView2.Columns.Clear();
+            using(SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                using(SqlCommand sqlCommand = new SqlCommand("SELECT Person_ID, Navn, Dato FROM stamdata", conn))
+                {
+                    using(SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCommand))
+                    {
+                        using(DataTable dataTable = new DataTable())
+                        {
+                            dataAdapter.Fill(dataTable);
+                            dataGridView2.DataSource = dataTable;
+                        }
+                    }
+                }
+            }
+            dataGridView2.AllowUserToAddRows = false;
+            DataGridViewButtonColumn buttonColumn = new DataGridViewButtonColumn();
+            dataGridView2.Columns.Insert(3, buttonColumn);
+            buttonColumn.HeaderText = "Delete Row";
+            buttonColumn.Width = 100;
+            buttonColumn.Text = "Delete";
+            buttonColumn.UseColumnTextForButtonValue = true;
         }
 
         private void button1_Slet_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow item in this.dataGridView2.SelectedRows)
-            {
-                var succes = new RepoDB().DeletePerson((item.DataBoundItem as Personale).Id);
-
-                if (succes)
-                {
-                    dataGridView2.Rows.RemoveAt(item.Index);
-                    MessageBox.Show("Delete Successful!", "Great", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                }
-                else
-                {
-                    MessageBox.Show("Delete Failed!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+            
         }
 
-        private List<string> GetUsers()
-        {
-            List<string> users = null; /*new RepoDB().SelectPersonInPersonale();*/
-            BindingSource source = new BindingSource();
-            source.DataSource = users;
-            dataGridView2.DataSource = source;
-
-            users = GetUsers();
-            source.ResetBindings(false);
-
-            return users;
-        }
-
-        private void RefreshGridView()
-        {
-            if (dataGridView2.InvokeRequired)
-            {
-                dataGridView2.Invoke((MethodInvoker)delegate ()
-                {
-                    RefreshGridView();
-                });
-            }
-            else
-            {
-                dataGridView2.Refresh();
-            }
-        }
-
-
-
+        
 
     }
 }
