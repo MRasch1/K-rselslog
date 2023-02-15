@@ -14,7 +14,6 @@ namespace Kørselslog
     public partial class KørselslogForside : Form
     {
         RepoDB _repo;
-        private readonly string _connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=H:\Visual Studio\Kørselslog\Kørselslog\DatabaseKørselslog.mdf;Integrated Security=True";
         
         public KørselslogForside()
         {
@@ -30,7 +29,7 @@ namespace Kørselslog
             dateTimePicker1.Text = dateTimePicker1.Text != string.Empty ? dateTimePicker1.Text : "2001/10/12";
             textBox1.Text = textBox1.Text != string.Empty ? textBox1.Text : "Mathias";
 
-            var p = new Personale() { Navn = textBox1.Text, Dato = DateTime.Parse(dateTimePicker1.Text) };
+            var p = new Personale() { Navn = textBox1.Text,/* Dato = DateTime.Parse(dateTimePicker1.Text)*/ };
             int id = _repo.CreatePersonInPersonale(p);
         }
 
