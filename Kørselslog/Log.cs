@@ -6,9 +6,13 @@ using System.Threading.Tasks;
 
 namespace Kørselslog
 {
-    internal class Log
+    public class Log
     {
-        public int Id { get; set; }
+        public string Navn { get; set; }
+
+        public DateTime Dato { get; set; }
+
+        public string NrPlade { get; set; }
 
         public string Tur { get; set; }
     }

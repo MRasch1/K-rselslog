@@ -14,7 +14,7 @@ namespace Kørselslog
     public partial class KørselslogForside : Form
     {
         RepoDB _repo;
-        
+
         public KørselslogForside()
         {
             InitializeComponent();
@@ -41,6 +41,7 @@ namespace Kørselslog
 
             var p = new Bil() { Navn = textBox3.Text, Dato = DateTime.Parse(dateTimePicker3.Text), NrPlade = textBox5.Text };
             int id = _repo.CreateBilInBil(p);
+
         }
 
         private void ShowPersonClick_Form1(object sender, EventArgs e)
@@ -81,9 +82,46 @@ namespace Kørselslog
             }
         }
 
+        private void button15__show_Log_Click(object sender, EventArgs e)
+        {
+            listView1.Clear();
+            listView1.Columns.Add("Log_ID", 55, HorizontalAlignment.Left);
+            listView1.Columns.Add("Navn", 55, HorizontalAlignment.Left);
+            listView1.Columns.Add("Dato", 80, HorizontalAlignment.Center);
+            listView1.Columns.Add("NrPlade", 100, HorizontalAlignment.Center);
+            listView1.Columns.Add("Tur", 80, HorizontalAlignment.Center);
+            listView1.View = View.Details;
+
+            var dataTable = _repo.GetLogDataTable();
+
+            for (int i = 0; i <= dataTable.Rows.Count - 1; i++)
+            {
+                listView1.Items.Add(dataTable.Rows[i].ItemArray[0].ToString());
+                listView1.Items[i].SubItems.Add(dataTable.Rows[i].ItemArray[1].ToString());
+                listView1.Items[i].SubItems.Add(dataTable.Rows[i].ItemArray[2].ToString());
+                listView1.Items[i].SubItems.Add(dataTable.Rows[i].ItemArray[3].ToString());
+                listView1.Items[i].SubItems.Add(dataTable.Rows[i].ItemArray[4].ToString());
+            }
+        }
+
         private void ClearListView1(object sender, EventArgs e)
         {
             listView1.Clear();
+        }
+
+        private void KørselslogForside_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'databaseKørselslogDataSet.BilData' table. You can move, or remove it, as needed.
+            this.bilDataTableAdapter.Fill(this.databaseKørselslogDataSet.BilData);
+            // TODO: This line of code loads data into the 'databaseKørselslogDataSet.stamdata' table. You can move, or remove it, as needed.
+            this.stamdataTableAdapter.Fill(this.databaseKørselslogDataSet.stamdata);
+
+        }
+
+        private void button7_Save_Kørselslog(object sender, EventArgs e)
+        {
+            var L = new Log() { Navn = comboBox3.Text, Dato = DateTime.Parse(dateTimePicker2.Text), NrPlade = comboBox1.Text, Tur = textBox8.Text };
+            int id = _repo.CreateLogInLog(L);
         }
 
         private void button12_RedigerPerson_Click(object sender, EventArgs e)
@@ -96,7 +134,7 @@ namespace Kørselslog
         {
             RedigerBil form3 = new RedigerBil();
             form3.ShowDialog();
-        }        
+        }
         private void button5_SletPerson_Click(object sender, EventArgs e)
         {
             SletPerson sletPerson = new SletPerson();
@@ -108,5 +146,22 @@ namespace Kørselslog
             SletBil sletBil = new SletBil();
             sletBil.ShowDialog();
         }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button8_refresh_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        
     }
 }

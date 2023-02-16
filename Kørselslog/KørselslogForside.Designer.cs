@@ -30,6 +30,7 @@ namespace Kørselslog
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KørselslogForside));
             this.panel1 = new System.Windows.Forms.Panel();
             this.button10 = new System.Windows.Forms.Button();
@@ -59,27 +60,36 @@ namespace Kørselslog
             this.SletStamdata = new System.Windows.Forms.Label();
             this.PersonaleData = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.bilDataBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.databaseKørselslogDataSet = new Kørselslog.DatabaseKørselslogDataSet();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label12 = new System.Windows.Forms.Label();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.stamdataBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label9 = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.button8 = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.button15 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
             this.label14 = new System.Windows.Forms.Label();
+            this.stamdataTableAdapter = new Kørselslog.DatabaseKørselslogDataSetTableAdapters.stamdataTableAdapter();
+            this.bilDataTableAdapter = new Kørselslog.DatabaseKørselslogDataSetTableAdapters.BilDataTableAdapter();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bilDataBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseKørselslogDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stamdataBindingSource)).BeginInit();
             this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -348,6 +358,8 @@ namespace Kørselslog
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.comboBox1);
+            this.panel4.Controls.Add(this.dateTimePicker2);
             this.panel4.Controls.Add(this.label12);
             this.panel4.Controls.Add(this.textBox8);
             this.panel4.Controls.Add(this.label8);
@@ -357,13 +369,39 @@ namespace Kørselslog
             this.panel4.Controls.Add(this.label10);
             this.panel4.Controls.Add(this.button8);
             this.panel4.Controls.Add(this.label11);
-            this.panel4.Controls.Add(this.textBox6);
-            this.panel4.Controls.Add(this.textBox7);
             this.panel4.Cursor = System.Windows.Forms.Cursors.Default;
             this.panel4.Location = new System.Drawing.Point(708, 43);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(210, 236);
             this.panel4.TabIndex = 12;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DataSource = this.bilDataBindingSource;
+            this.comboBox1.DisplayMember = "NrPlade";
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(95, 101);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(100, 21);
+            this.comboBox1.TabIndex = 21;
+            this.comboBox1.ValueMember = "Bil_ID";
+            // 
+            // bilDataBindingSource
+            // 
+            this.bilDataBindingSource.DataMember = "BilData";
+            this.bilDataBindingSource.DataSource = this.databaseKørselslogDataSet;
+            // 
+            // databaseKørselslogDataSet
+            // 
+            this.databaseKørselslogDataSet.DataSetName = "DatabaseKørselslogDataSet";
+            this.databaseKørselslogDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(95, 76);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(100, 20);
+            this.dateTimePicker2.TabIndex = 20;
             // 
             // label12
             // 
@@ -392,11 +430,20 @@ namespace Kørselslog
             // 
             // comboBox3
             // 
+            this.comboBox3.DataSource = this.stamdataBindingSource;
+            this.comboBox3.DisplayMember = "Navn";
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Location = new System.Drawing.Point(95, 49);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(100, 21);
             this.comboBox3.TabIndex = 11;
+            this.comboBox3.ValueMember = "Person_ID";
+            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
+            // 
+            // stamdataBindingSource
+            // 
+            this.stamdataBindingSource.DataMember = "stamdata";
+            this.stamdataBindingSource.DataSource = this.databaseKørselslogDataSet;
             // 
             // label9
             // 
@@ -415,6 +462,7 @@ namespace Kørselslog
             this.button7.TabIndex = 10;
             this.button7.Text = "Ok";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Save_Kørselslog);
             // 
             // label10
             // 
@@ -431,8 +479,9 @@ namespace Kørselslog
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(75, 23);
             this.button8.TabIndex = 9;
-            this.button8.Text = "Cancel";
+            this.button8.Text = "Refresh";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_refresh_Click);
             // 
             // label11
             // 
@@ -444,22 +493,9 @@ namespace Kørselslog
             this.label11.TabIndex = 1;
             this.label11.Text = "Opret kørsels log:";
             // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(95, 102);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 8;
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(95, 76);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 20);
-            this.textBox7.TabIndex = 7;
-            // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.button15);
             this.panel5.Controls.Add(this.button4);
             this.panel5.Controls.Add(this.button3);
             this.panel5.Controls.Add(this.button11);
@@ -469,6 +505,16 @@ namespace Kørselslog
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(398, 236);
             this.panel5.TabIndex = 13;
+            // 
+            // button15
+            // 
+            this.button15.Location = new System.Drawing.Point(30, 141);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(59, 23);
+            this.button15.TabIndex = 23;
+            this.button15.Text = "Log Data";
+            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15__show_Log_Click);
             // 
             // button4
             // 
@@ -492,7 +538,7 @@ namespace Kørselslog
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(30, 123);
+            this.button11.Location = new System.Drawing.Point(30, 112);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(59, 23);
             this.button11.TabIndex = 20;
@@ -513,11 +559,20 @@ namespace Kørselslog
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(185, 26);
+            this.label14.Location = new System.Drawing.Point(110, 22);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(104, 20);
+            this.label14.Size = new System.Drawing.Size(211, 20);
             this.label14.TabIndex = 0;
-            this.label14.Text = "Se stamdata:";
+            this.label14.Text = "Se Stam data eller Log data:";
+            this.label14.Click += new System.EventHandler(this.label14_Click);
+            // 
+            // stamdataTableAdapter
+            // 
+            this.stamdataTableAdapter.ClearBeforeFill = true;
+            // 
+            // bilDataTableAdapter
+            // 
+            this.bilDataTableAdapter.ClearBeforeFill = true;
             // 
             // KørselslogForside
             // 
@@ -540,6 +595,7 @@ namespace Kørselslog
             this.Name = "KørselslogForside";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Text = "Kørselslog";
+            this.Load += new System.EventHandler(this.KørselslogForside_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -548,6 +604,9 @@ namespace Kørselslog
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bilDataBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseKørselslogDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stamdataBindingSource)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.ResumeLayout(false);
@@ -581,8 +640,6 @@ namespace Kørselslog
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
@@ -606,6 +663,14 @@ namespace Kørselslog
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
+        private DatabaseKørselslogDataSet databaseKørselslogDataSet;
+        private System.Windows.Forms.BindingSource stamdataBindingSource;
+        private DatabaseKørselslogDataSetTableAdapters.stamdataTableAdapter stamdataTableAdapter;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.BindingSource bilDataBindingSource;
+        private DatabaseKørselslogDataSetTableAdapters.BilDataTableAdapter bilDataTableAdapter;
+        private System.Windows.Forms.Button button15;
     }
 }
 

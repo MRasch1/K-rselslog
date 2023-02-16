@@ -20,8 +20,6 @@ namespace Kørselslog
 
         }
 
-
-
         public int CreatePersonInPersonale(Personale personale)
         {
             int result = -1;
@@ -65,6 +63,39 @@ namespace Kørselslog
         public bool Delete(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public int CreateLogInLog(Log log)
+        {
+            int result = -1;
+
+            // Open the connection.
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string sql = "INSERT INTO LogData (Navn,Dato,NrPlade,Tur) VALUES(@Navn,@Dato,@NrPlade,@Tur)";
+
+                    using (var sqlCommand = new SqlCommand(sql, conn))
+                    {
+                        sqlCommand.Parameters.AddWithValue("@Navn", log.Navn);
+                        sqlCommand.Parameters.AddWithValue("@Dato", log.Dato);
+                        sqlCommand.Parameters.AddWithValue("@NrPlade", log.NrPlade);
+                        sqlCommand.Parameters.AddWithValue("@Tur", log.Tur);
+                        var antalgemteRækker = sqlCommand.ExecuteNonQuery();
+                        result = antalgemteRækker;
+                        conn.Close();
+                    }
+                }
+                catch (Exception ex)//catch exeption
+                {
+                    conn.Close();
+                    //displaying errors message.
+                    MessageBox.Show(ex.Message);
+                }
+                return result;
+            }
         }
 
         public Personale SELECTPersonInPersonaleById(int id)
@@ -261,6 +292,28 @@ namespace Kørselslog
                 var _dataSet = new DataSet();
 
                 using (var _cmd = new SqlCommand("select * from BilData", conn))
+                {
+                    dataAdapter = new SqlDataAdapter(_cmd);
+                    int numberOFRowsAddedToDataSet = dataAdapter.Fill(_dataSet, "StamTable");
+                }
+
+                dataTable = _dataSet.Tables["StamTable"];
+                conn.Close();
+            }
+            return dataTable;
+        }
+
+        public DataTable GetLogDataTable()
+        {
+            SqlDataAdapter dataAdapter = null;
+            DataTable dataTable = null;
+
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+                var _dataSet = new DataSet();
+
+                using (var _cmd = new SqlCommand("select * from LogData", conn))
                 {
                     dataAdapter = new SqlDataAdapter(_cmd);
                     int numberOFRowsAddedToDataSet = dataAdapter.Fill(_dataSet, "StamTable");
