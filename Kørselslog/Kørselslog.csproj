@@ -70,6 +70,12 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Include="SletBil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SletBil.Designer.cs">
+      <DependentUpon>SletBil.cs</DependentUpon>
+    </Compile>
     <Compile Include="SletPerson.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +124,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SletBil.resx">
+      <DependentUpon>SletBil.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SletPerson.resx">
       <DependentUpon>SletPerson.cs</DependentUpon>
     </EmbeddedResource>

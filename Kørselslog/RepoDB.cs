@@ -37,7 +37,7 @@ namespace Kørselslog
                     using (var sqlCommand = new SqlCommand(sql, conn))
                     {
                         sqlCommand.Parameters.AddWithValue("@Navn", personale.Navn);
-                        //sqlCommand.Parameters.AddWithValue("@Dato", personale.Dato);
+                        sqlCommand.Parameters.AddWithValue("@Dato", personale.Dato);
                         var antalgemteRækker = sqlCommand.ExecuteNonQuery();
                         result = antalgemteRækker;
                         conn.Close();
@@ -69,7 +69,7 @@ namespace Kørselslog
 
         public Personale SELECTPersonInPersonaleById(int id)
         {
-            //List<Personale> result = new List<Personale>(); 
+            List<Personale> result = new List<Personale>();
             Personale person = new Personale();
 
             using (var con = new SqlConnection(_connectionString))
@@ -80,14 +80,14 @@ namespace Kørselslog
                     try
                     {
                         con.Open();
-                        //var reader = sqlCommand.ExecuteReader();
-                        // store a value locally indicating if the previous update has rows.   
                         var reader = sqlCommand.ExecuteReader();
+                        // store a value locally indicating if the previous update has rows.   
+                        
                         while (reader.Read())
                         {
                             person.Id = reader.GetInt32(0);
                             person.Navn = reader.GetString(1);
-                            //person.Dato = reader.GetDateTime(2);
+                            person.Dato = reader.GetDateTime(2);
                         }
                         con.Close();
                     }
@@ -118,10 +118,10 @@ namespace Kørselslog
                     using (var sqlCommand = new SqlCommand(sql, conn))
                     {
                         sqlCommand.Parameters.AddWithValue("@Navn", personale.OpdaterNavn);
-                        //sqlCommand.Parameters.AddWithValue("@Dato", personale.OpdaterDato);
+                        sqlCommand.Parameters.AddWithValue("@Dato", personale.OpdaterDato);
                         sqlCommand.Parameters.AddWithValue("@Person_ID", personale.Id);
-                        //cm.Parameters.AddWithValue("@OpdaterNavn", SqlDbType.VarChar).Value = personale.OpdaterNavn;
-                        //cm.Parameters.AddWithValue("@OpdaterDato", SqlDbType.DateTime).Value = personale.OpdaterDato;
+                        sqlCommand.Parameters.AddWithValue("@OpdaterNavn", SqlDbType.VarChar).Value = personale.OpdaterNavn;
+                        sqlCommand.Parameters.AddWithValue("@OpdaterDato", SqlDbType.DateTime).Value = personale.OpdaterDato;
                         var antalgemteRækker = sqlCommand.ExecuteNonQuery();
                         result = antalgemteRækker;
                         // store a value locally indicating if the previous update has rows.   
@@ -235,8 +235,6 @@ namespace Kørselslog
                         sqlCommand.Parameters.AddWithValue("@NrPlade", bil.OpdaterNrPlade);
                         sqlCommand.Parameters.AddWithValue("@Dato", bil.OpdaterDato);
                         sqlCommand.Parameters.AddWithValue("@Bil_ID", bil.Id);
-                        //cm.Parameters.AddWithValue("@OpdaterNavn", SqlDbType.VarChar).Value = personale.OpdaterNavn;
-                        //cm.Parameters.AddWithValue("@OpdaterDato", SqlDbType.DateTime).Value = personale.OpdaterDato;
                         var antalgemteRækker = sqlCommand.ExecuteNonQuery();
                         result = antalgemteRækker;
                         // store a value locally indicating if the previous update has rows.   

@@ -29,7 +29,7 @@ namespace Kørselslog
             dateTimePicker1.Text = dateTimePicker1.Text != string.Empty ? dateTimePicker1.Text : "2001/10/12";
             textBox1.Text = textBox1.Text != string.Empty ? textBox1.Text : "Mathias";
 
-            var p = new Personale() { Navn = textBox1.Text,/* Dato = DateTime.Parse(dateTimePicker1.Text)*/ };
+            var p = new Personale() { Navn = textBox1.Text, Dato = DateTime.Parse(dateTimePicker1.Text) };
             int id = _repo.CreatePersonInPersonale(p);
         }
 
@@ -80,10 +80,6 @@ namespace Kørselslog
                 listView1.Items[i].SubItems.Add(dataTable.Rows[i].ItemArray[3].ToString());
             }
         }
-        public void button5_Slet_Click(object sender, EventArgs e)
-        {
-            
-        }
 
         private void ClearListView1(object sender, EventArgs e)
         {
@@ -107,6 +103,10 @@ namespace Kørselslog
             sletPerson.ShowDialog();
         }
 
-
+        private void button6_SletBil_Click(object sender, EventArgs e)
+        {
+            SletBil sletBil = new SletBil();
+            sletBil.ShowDialog();
+        }
     }
 }
