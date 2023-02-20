@@ -109,19 +109,15 @@ namespace Kørselslog
             listView1.Clear();
         }
 
-        private void KørselslogForside_Load(object sender, EventArgs e)
+        private void button1_ClearPersonText_Click(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'databaseKørselslogDataSet.BilData' table. You can move, or remove it, as needed.
-            this.bilDataTableAdapter.Fill(this.databaseKørselslogDataSet.BilData);
-            // TODO: This line of code loads data into the 'databaseKørselslogDataSet.stamdata' table. You can move, or remove it, as needed.
-            this.stamdataTableAdapter.Fill(this.databaseKørselslogDataSet.stamdata);
-
+            textBox1.Clear();
         }
 
-        private void button7_Save_Kørselslog(object sender, EventArgs e)
+        private void button10_ClearBilText_Click(object sender, EventArgs e)
         {
-            var L = new Log() { Navn = comboBox3.Text, Dato = DateTime.Parse(dateTimePicker2.Text), NrPlade = comboBox1.Text, Tur = textBox8.Text };
-            int id = _repo.CreateLogInLog(L);
+            textBox3.Clear();
+            textBox5.Clear();
         }
 
         private void button12_RedigerPerson_Click(object sender, EventArgs e)
@@ -135,6 +131,7 @@ namespace Kørselslog
             RedigerBil form3 = new RedigerBil();
             form3.ShowDialog();
         }
+
         private void button5_SletPerson_Click(object sender, EventArgs e)
         {
             SletPerson sletPerson = new SletPerson();
@@ -147,21 +144,16 @@ namespace Kørselslog
             sletBil.ShowDialog();
         }
 
-        private void label14_Click(object sender, EventArgs e)
+        private void button7_OpretKørselslog_Click(object sender, EventArgs e)
         {
-
+            OpretKørselslog opretKørselslog = new OpretKørselslog();
+            opretKørselslog.ShowDialog();
         }
 
-        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        private void button14_SletLog_Click(object sender, EventArgs e)
         {
-
+            SletLog sletLog = new SletLog();
+            sletLog.ShowDialog();
         }
-
-        private void button8_refresh_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        
     }
 }

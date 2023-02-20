@@ -12,12 +12,13 @@ namespace Kørselslog
 {
     public partial class SletPerson : Form
     {
-
-        private readonly string _connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=H:\Visual Studio\Kørselslog\Kørselslog\DatabaseKørselslog.mdf;Integrated Security=True";
+        RepoDB _repo;       
+        int _tæller = 0;
 
         public SletPerson()
         {
             InitializeComponent();
+            _repo = new RepoDB();
         }
 
         private void SletPerson_Load(object sender, EventArgs e)
@@ -31,34 +32,24 @@ namespace Kørselslog
         private void load_data()
         {
             //dataGridView2.Columns.Clear();
-            dataGridView2.DataSource = GetAllPersonsFromStamdataTable();
+            dataGridView2.DataSource = _repo.GetAllPersonsFromStamdataTable_For_DeletePersonById();
 
             dataGridView2.AllowUserToAddRows = false;
 
             DataGridViewButtonColumn buttonColumn = new DataGridViewButtonColumn();
-
+            if (_tæller == 0)
+            {
             dataGridView2.Columns.Insert(3, buttonColumn);
             buttonColumn.HeaderText = "Delete Row";
             buttonColumn.Width = 100;
             buttonColumn.Text = "Delete";
             buttonColumn.UseColumnTextForButtonValue = true;
-        }
-
-        private DataTable GetAllPersonsFromStamdataTable()
-        {
-            DataTable dataTable = new DataTable();
-
-            using (SqlConnection conn = new SqlConnection(_connectionString))
-            {
-                using (SqlCommand sqlCommand = new SqlCommand("SELECT Person_ID, Navn, Dato FROM stamdata", conn))
-                {
-                    using (SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCommand))
-                    {
-                        dataAdapter.Fill(dataTable);
-                    }
-                }
             }
-            return dataTable;
+            else
+            {
+
+            }
+            _tæller++;
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -75,23 +66,8 @@ namespace Kørselslog
 
                 if (MessageBox.Show(string.Format("Do you want to delete this row?"), "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    DeletePersonById(id);
+                    _repo.DeletePersonById(id);
                     load_data();
-                }
-            }
-        }
-
-        private void DeletePersonById(int id)
-        {
-            using (SqlConnection conn = new SqlConnection(_connectionString))
-            {
-                using (SqlCommand sqlCommand = new SqlCommand("DELETE FROM stamdata WHERE Person_ID = @Person_ID", conn))
-                {
-                    sqlCommand.Parameters.AddWithValue("Person_ID", id);
-
-                    conn.Open();
-                    sqlCommand.ExecuteNonQuery();
-                    conn.Close();
                 }
             }
         }

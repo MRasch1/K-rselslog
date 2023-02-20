@@ -155,8 +155,7 @@ namespace Kørselslog
                         sqlCommand.Parameters.AddWithValue("@OpdaterDato", SqlDbType.DateTime).Value = personale.OpdaterDato;
                         var antalgemteRækker = sqlCommand.ExecuteNonQuery();
                         result = antalgemteRækker;
-                        // store a value locally indicating if the previous update has rows.   
-
+                        // store a value locally indicating if the previous update has rows.
                     }
                 }
                 catch (Exception ex)//catch exeption
@@ -188,6 +187,38 @@ namespace Kørselslog
                 conn.Close();
             }
             return dataTable;
+        }
+
+        public DataTable GetAllPersonsFromStamdataTable_For_DeletePersonById()
+        {
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand sqlCommand = new SqlCommand("SELECT Person_ID, Navn, Dato FROM stamdata", conn))
+                {
+                    using (SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCommand))
+                    {
+                        dataAdapter.Fill(dataTable);
+                    }
+                }
+            }
+            return dataTable;
+        }
+
+        public void DeletePersonById(int id)
+        {
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand sqlCommand = new SqlCommand("DELETE FROM stamdata WHERE Person_ID = @Person_ID", conn))
+                {
+                    sqlCommand.Parameters.AddWithValue("Person_ID", id);
+
+                    conn.Open();
+                    sqlCommand.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
         }
 
         public int CreateBilInBil(Bil bil)
@@ -247,7 +278,6 @@ namespace Kørselslog
                     return result;
                 }
             }
-
         }
         public int UPDATEBilInBil(Bil bil)
         {
@@ -303,6 +333,38 @@ namespace Kørselslog
             return dataTable;
         }
 
+        public DataTable GetAllBilerFromStamdataTable()
+        {
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand sqlCommand = new SqlCommand("SELECT Bil_ID, Navn, NrPlade, Dato FROM BilData", conn))
+                {
+                    using (SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCommand))
+                    {
+                        dataAdapter.Fill(dataTable);
+                    }
+                }
+            }
+            return dataTable;
+        }
+
+        public void DeleteBilById(int id)
+        {
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand sqlCommand = new SqlCommand("DELETE FROM BilData WHERE Bil_ID = @Bil_ID", conn))
+                {
+                    sqlCommand.Parameters.AddWithValue("Bil_ID", id);
+
+                    conn.Open();
+                    sqlCommand.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+        }
+
         public DataTable GetLogDataTable()
         {
             SqlDataAdapter dataAdapter = null;
@@ -321,6 +383,38 @@ namespace Kørselslog
 
                 dataTable = _dataSet.Tables["StamTable"];
                 conn.Close();
+            }
+            return dataTable;
+        }
+
+        public void DeleteLogById(int id)
+        {
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand sqlCommand = new SqlCommand("DELETE FROM LogData WHERE Log_ID = @Log_ID", conn))
+                {
+                    sqlCommand.Parameters.AddWithValue("Log_ID", id);
+
+                    conn.Open();
+                    sqlCommand.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+        }
+
+        public DataTable GetAllLogFromLogDataTable_For_DeleteLogById()
+        {
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand sqlCommand = new SqlCommand("SELECT Log_ID, Navn, Dato, NrPlade, Tur FROM LogData", conn))
+                {
+                    using (SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCommand))
+                    {
+                        dataAdapter.Fill(dataTable);
+                    }
+                }
             }
             return dataTable;
         }
