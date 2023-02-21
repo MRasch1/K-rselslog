@@ -451,9 +451,9 @@ namespace Kørselslog
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(42, 23);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(132, 20);
+            this.label11.Size = new System.Drawing.Size(128, 20);
             this.label11.TabIndex = 1;
-            this.label11.Text = "Opret kørsels log:";
+            this.label11.Text = "Opret kørselslog:";
             // 
             // panel4
             // 
@@ -495,7 +495,7 @@ namespace Kørselslog
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "KørselslogForside";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Text = "Kørselslog";
+            this.Text = resources.GetString("$this.Text");
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

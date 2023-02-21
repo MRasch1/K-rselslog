@@ -70,11 +70,23 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Include="OpretKørselslog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpretKørselslog.Designer.cs">
+      <DependentUpon>OpretKørselslog.cs</DependentUpon>
+    </Compile>
     <Compile Include="SletBil.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SletBil.Designer.cs">
       <DependentUpon>SletBil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SletLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SletLog.Designer.cs">
+      <DependentUpon>SletLog.cs</DependentUpon>
     </Compile>
     <Compile Include="SletPerson.cs">
       <SubType>Form</SubType>
@@ -108,6 +120,9 @@
     <EmbeddedResource Include="KørselslogForside.resx">
       <DependentUpon>KørselslogForside.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OpretKørselslog.resx">
+      <DependentUpon>OpretKørselslog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RedigerPerson.resx">
       <DependentUpon>RedigerPerson.cs</DependentUpon>
     </EmbeddedResource>
@@ -126,6 +141,9 @@
     </Compile>
     <EmbeddedResource Include="SletBil.resx">
       <DependentUpon>SletBil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SletLog.resx">
+      <DependentUpon>SletLog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SletPerson.resx">
       <DependentUpon>SletPerson.cs</DependentUpon>

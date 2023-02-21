@@ -178,7 +178,7 @@
             this.RedigerStamdata.TabIndex = 1;
             this.RedigerStamdata.Text = "Vælg Bil:";
             // 
-            // Form3
+            // RedigerBil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -188,7 +188,7 @@
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
-            this.Name = "Form3";
+            this.Name = "RedigerBil";
             this.Text = "Forms3";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

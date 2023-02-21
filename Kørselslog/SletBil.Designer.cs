@@ -138,7 +138,7 @@
             this.Controls.Add(this.panel5);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SletBil";
-            this.Text = "Form1";
+            this.Text = "Slet Bil";
             this.Load += new System.EventHandler(this.SletBil_Load);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();

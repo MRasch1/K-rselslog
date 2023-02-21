@@ -12,11 +12,13 @@ namespace Kørselslog
 {
     public partial class SletBil : Form
     {
-        private readonly string _connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=H:\Visual Studio\Kørselslog\Kørselslog\DatabaseKørselslog.mdf;Integrated Security=True";
+        RepoDB _repo;
+        int _tæller = 0;
 
         public SletBil()
         {
             InitializeComponent();
+            _repo = new RepoDB();
         }
 
         private void SletBil_Load(object sender, EventArgs e)
@@ -30,34 +32,25 @@ namespace Kørselslog
         private void load_data()
         {
             //dataGridView2.Columns.Clear();
-            dataGridView3.DataSource = GetAllBilerFromStamdataTable();
+            dataGridView3.DataSource = _repo.GetAllBilerFromStamdataTable();
 
             dataGridView3.AllowUserToAddRows = false;
 
             DataGridViewButtonColumn buttonColumn = new DataGridViewButtonColumn();
 
+            if (_tæller == 0)
+            {
             dataGridView3.Columns.Insert(4, buttonColumn);
             buttonColumn.HeaderText = "Delete Row";
             buttonColumn.Width = 100;
             buttonColumn.Text = "Delete";
             buttonColumn.UseColumnTextForButtonValue = true;
-        }
-
-        private DataTable GetAllBilerFromStamdataTable()
-        {
-            DataTable dataTable = new DataTable();
-
-            using (SqlConnection conn = new SqlConnection(_connectionString))
-            {
-                using (SqlCommand sqlCommand = new SqlCommand("SELECT Bil_ID, Navn, NrPlade, Dato FROM BilData", conn))
-                {
-                    using (SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCommand))
-                    {
-                        dataAdapter.Fill(dataTable);
-                    }
-                }
             }
-            return dataTable;
+            else
+            {
+
+            }
+            _tæller++;
         }
 
         private void dataGridView3_SletBil(object sender, DataGridViewCellEventArgs e)
@@ -74,23 +67,8 @@ namespace Kørselslog
 
                 if (MessageBox.Show(string.Format("Do you want to delete this row?"), "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    DeleteBilById(id);
+                    _repo.DeleteBilById(id);
                     load_data();
-                }
-            }
-        }
-
-        private void DeleteBilById(int id)
-        {
-            using (SqlConnection conn = new SqlConnection(_connectionString))
-            {
-                using (SqlCommand sqlCommand = new SqlCommand("DELETE FROM BilData WHERE Bil_ID = @Bil_ID", conn))
-                {
-                    sqlCommand.Parameters.AddWithValue("Bil_ID", id);
-
-                    conn.Open();
-                    sqlCommand.ExecuteNonQuery();
-                    conn.Close();
                 }
             }
         }
