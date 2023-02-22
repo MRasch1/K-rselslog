@@ -113,7 +113,7 @@ namespace Kørselslog
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(50, 23);
             this.button10.TabIndex = 19;
-            this.button10.Text = "Cancel";
+            this.button10.Text = "Fortryd";
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_ClearBilText_Click);
             // 
@@ -226,7 +226,7 @@ namespace Kørselslog
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(50, 23);
             this.button1.TabIndex = 4;
-            this.button1.Text = "Cancel";
+            this.button1.Text = "Fortryd";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_ClearPersonText_Click);
             // 
@@ -404,7 +404,7 @@ namespace Kørselslog
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(59, 23);
             this.button3.TabIndex = 21;
-            this.button3.Text = "Clear";
+            this.button3.Text = "Fjern";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.ClearListView1);
             // 

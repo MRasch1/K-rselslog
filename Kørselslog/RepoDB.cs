@@ -13,7 +13,6 @@ namespace Kørselslog
     public class RepoDB
     {
         private bool _hasRows;
-        //private SqlDataReader _sqlReader;
         private readonly string _connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=H:\Visual Studio\Kørselslog\Kørselslog\DatabaseKørselslog.mdf;Integrated Security=True";
         public RepoDB()
         {
@@ -49,20 +48,6 @@ namespace Kørselslog
                 }
                 return result;
             }
-        }
-        public List<Personale> Readall()
-        {
-            throw new NotImplementedException();
-        }
-
-        public int Update(Personale p)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Delete(int id)
-        {
-            throw new NotImplementedException();
         }
 
         public int CreateLogInLog(Log log)
@@ -167,6 +152,7 @@ namespace Kørselslog
             }
             return result;
         }
+
         public DataTable GetPersonDataTable()
         {
             SqlDataAdapter dataAdapter = null;
@@ -251,6 +237,7 @@ namespace Kørselslog
                 return result;
             }
         }
+
         public int SELECTBilInBil(Bil bil)
         {
             int result = -1;
@@ -279,6 +266,7 @@ namespace Kørselslog
                 }
             }
         }
+
         public int UPDATEBilInBil(Bil bil)
         {
             int result = -1;
@@ -311,6 +299,7 @@ namespace Kørselslog
             }
             return result;
         }
+
         public DataTable GetBilDataTable()
         {
             SqlDataAdapter dataAdapter = null;
@@ -441,5 +430,4 @@ namespace Kørselslog
             return lines > 0;
         }
     }
-
 }
