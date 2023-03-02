@@ -183,6 +183,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>DatabaseKørselslog.mdf</DependentUpon>
     </Content>
+    <Content Include="Pictures\taxi baggrundsbillede.jpeg" />
+    <Content Include="Pictures\taxi.ico" />
     <Content Include="Screenshots\table relations table 2023-02-01 083052.png" />
     <Content Include="Screenshots\table stamdata 2023-02-01 082937.png" />
   </ItemGroup>
