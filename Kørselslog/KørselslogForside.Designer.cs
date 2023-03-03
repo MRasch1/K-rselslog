@@ -54,10 +54,10 @@ namespace Kørselslog
             this.button12 = new System.Windows.Forms.Button();
             this.RedigerStamdata = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.button14 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.SletStamdata = new System.Windows.Forms.Label();
+            this.button14 = new System.Windows.Forms.Button();
             this.PersonaleData = new System.Windows.Forms.Label();
             this.bilDataBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.databaseKørselslogDataSet = new Kørselslog.DatabaseKørselslogDataSet();
@@ -290,7 +290,6 @@ namespace Kørselslog
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.button14);
             this.panel3.Controls.Add(this.button6);
             this.panel3.Controls.Add(this.button5);
             this.panel3.Controls.Add(this.SletStamdata);
@@ -300,21 +299,11 @@ namespace Kørselslog
             this.panel3.Size = new System.Drawing.Size(209, 264);
             this.panel3.TabIndex = 2;
             // 
-            // button14
-            // 
-            this.button14.Location = new System.Drawing.Point(62, 187);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(89, 31);
-            this.button14.TabIndex = 5;
-            this.button14.Text = "Slet Kørselslog";
-            this.button14.UseVisualStyleBackColor = true;
-            this.button14.Click += new System.EventHandler(this.button14_SletLog_Click);
-            // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(62, 121);
+            this.button6.Location = new System.Drawing.Point(62, 163);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(89, 31);
+            this.button6.Size = new System.Drawing.Size(89, 42);
             this.button6.TabIndex = 4;
             this.button6.Text = "Slet Bil";
             this.button6.UseVisualStyleBackColor = true;
@@ -322,9 +311,9 @@ namespace Kørselslog
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(62, 57);
+            this.button5.Location = new System.Drawing.Point(62, 71);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(89, 32);
+            this.button5.Size = new System.Drawing.Size(89, 52);
             this.button5.TabIndex = 4;
             this.button5.Text = "Slet Person";
             this.button5.UseVisualStyleBackColor = true;
@@ -339,6 +328,16 @@ namespace Kørselslog
             this.SletStamdata.Size = new System.Drawing.Size(102, 18);
             this.SletStamdata.TabIndex = 1;
             this.SletStamdata.Text = "Slet stamdata:";
+            // 
+            // button14
+            // 
+            this.button14.Location = new System.Drawing.Point(47, 141);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(116, 46);
+            this.button14.TabIndex = 5;
+            this.button14.Text = "Slet Kørselslog";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_SletLog_Click);
             // 
             // PersonaleData
             // 
@@ -433,9 +432,9 @@ namespace Kørselslog
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.Location = new System.Drawing.Point(110, 22);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(211, 20);
+            this.label14.Size = new System.Drawing.Size(207, 20);
             this.label14.TabIndex = 0;
-            this.label14.Text = "Se Stam data eller Log data:";
+            this.label14.Text = "Se Stamdata eller Log data:";
             // 
             // stamdataTableAdapter
             // 
@@ -449,14 +448,15 @@ namespace Kørselslog
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(42, 23);
+            this.label11.Location = new System.Drawing.Point(65, 22);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(128, 20);
+            this.label11.Size = new System.Drawing.Size(86, 20);
             this.label11.TabIndex = 1;
-            this.label11.Text = "Opret kørselslog:";
+            this.label11.Text = "Kørselslog:";
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.button14);
             this.panel4.Controls.Add(this.button7);
             this.panel4.Controls.Add(this.label11);
             this.panel4.Cursor = System.Windows.Forms.Cursors.Default;
@@ -467,7 +467,7 @@ namespace Kørselslog
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(54, 102);
+            this.button7.Location = new System.Drawing.Point(47, 65);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(114, 46);
             this.button7.TabIndex = 6;
